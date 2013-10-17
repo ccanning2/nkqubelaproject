@@ -4,8 +4,9 @@
  */
 package hospital.services.crud;
 
-import hospital.services.Service;
+
 import hospital.model.entities.Department;
+import hospital.services.Service;
 
 /**
  *
