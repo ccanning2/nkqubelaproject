@@ -30,8 +30,6 @@ public class DepartmentCrudTest {
     
     @Test
     public void testDepartmentCrud(){
-        ctx = new ClassPathXmlApplicationContext("classpath:hospital/app/config/applicationContext-connection.xml");
-
         departmentCrudService = (DepartmentCrudService) ctx.getBean("departmentCrudService");
         Department department = AppFactory.getDepartment("Chris Canning", 1, "This is the description", 100, (long)1);
 
@@ -45,7 +43,7 @@ public class DepartmentCrudTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-
+        ctx = new ClassPathXmlApplicationContext("classpath:hospital/app/config/applicationContext-connection.xml");
     }
 
     @AfterClass

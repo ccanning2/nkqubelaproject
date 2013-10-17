@@ -32,14 +32,14 @@ public class RESTController {
     ResponseEntity<List<DepartmentResource>> getDepartments() {   
         List<Department> d = departmentService.getDepartment();   
         List<DepartmentResource> resourceList = departmentResourceAssembler.toResources(d);  
-    return new ResponseEntity<List<DepartmentResource>>(resourceList, HttpStatus.OK);  
+        return new ResponseEntity<List<DepartmentResource>>(resourceList, HttpStatus.OK);  
     } 
     
     @ExceptionHandler 
-      ResponseEntity handleExceptions(Exception ex) {  
-        ResponseEntity responseEntity = null;     
-        responseEntity = new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);   
-            return responseEntity;  
-        } 
+    ResponseEntity handleExceptions(Exception ex) {  
+      ResponseEntity responseEntity = null;     
+      responseEntity = new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);   
+      return responseEntity;  
+    } 
 }
  
