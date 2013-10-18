@@ -9,6 +9,8 @@
     <class>hospital.model.entities.Patient</class>
     <class>hospital.model.entities.StaffMember</class>
     <class>hospital.model.entities.Person</class>
+    <class>hospital.model.entities.Roles</class>
+    <class>hospital.model.entities.Users</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.connection.username" value="username"/>
