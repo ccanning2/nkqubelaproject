@@ -16,7 +16,7 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class StaffMember implements Serializable{
+public class StaffMember extends Person implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

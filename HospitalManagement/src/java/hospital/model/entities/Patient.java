@@ -18,7 +18,7 @@ import javax.persistence.Temporal;
  * @author Hospital Management
  */
 @Entity
-public class Patient implements Serializable {
+public class Patient extends Person implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
