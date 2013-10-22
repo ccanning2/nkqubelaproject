@@ -23,9 +23,22 @@ public class Patient extends Person implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    private Long patientNumber;
+    private String FName;
+    private long patientNumber;
     private String currentCondition;
+
+    public String getFName() {
+        return FName;
+    }
+
+    public void setFName(String FName) {
+        this.FName = FName;
+    }
+   
+    
+
+   
+   
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateOfArrival;    
@@ -39,11 +52,15 @@ public class Patient extends Person implements Serializable {
     @OneToOne
     private MedicalAid medicalAid;
 
-    public Long getPatientNumber() {
+  
+
+  
+
+    public long getPatientNumber() {
         return patientNumber;
     }
 
-    public void setPatientNumber(Long patientNumber) {
+    public void setPatientNumber(long patientNumber) {
         this.patientNumber = patientNumber;
     }
 

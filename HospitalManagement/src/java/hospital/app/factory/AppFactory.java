@@ -5,11 +5,15 @@
 package hospital.app.factory;
 
 import hospital.model.embeddables.Contact;
+import hospital.model.embeddables.Name;
 import hospital.model.entities.Department;
+import hospital.model.entities.MedicalAid;
+import hospital.model.entities.Patient;
 import hospital.model.entities.Roles;
 import hospital.model.entities.Users;
 import hospital.model.md5.PasswordEncrypt;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,5 +63,18 @@ public class AppFactory
         role.setUserName(userName);
         
         return role;
+    }
+     public static Patient getPatient(Map<String, String> stringValues,long bedNumber, long patientNumber) 
+    {
+        Name name = new Name();
+        Patient patient = new Patient();
+       
+        patient.setName(name);
+        patient.setBedNumber(bedNumber);
+        patient.setPatientNumber(patientNumber);
+        patient.setReasonForStay("reasonForStay");
+       
+      
+        return patient;
     }
 }
