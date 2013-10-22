@@ -1,0 +1,352 @@
+/* 
+    Document   : style
+    Created on : 20 October 2013.
+    Author     : Hospital Management
+    Description: Styles, font and colors are set here.
+*/
+
+h1{
+    color: black;
+    font-size: 24pt;
+    font-family: Georgia, serif;
+}
+
+#header{
+    color: white;
+    background-image: url('../images/hospital.jpg');
+    background-repeat: repeat;
+    background-position: bottom;
+    text-align: center;
+}
+
+#footer{
+    background-color: #1B77E0;
+    color: white;
+    text-decoration: none;
+    margin-top: 13%;
+    height: 50px;
+    text-align: center;
+    padding-top: 30px;
+}
+
+#footer a{
+    font-size: 10pt;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    padding-right: 15px;
+    font-family: Georgia, serif;
+}
+
+#footer a:hover{
+    font-size: 13pt;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+}
+
+#tableSpacer{
+    width: 65%;
+}
+
+#displaytable
+{
+    font-family: Georgia, serif;
+    width:100%;
+    border-collapse:collapse;
+}
+#displaytable td, #displaytable th 
+{
+    font-size:1em;
+    border:1px solid #4998F2;
+    padding:3px 7px 2px 7px;
+}
+#displaytable th 
+{
+    font-size:1.1em;
+    text-align:center;
+    text-transform: uppercase;
+    padding-top:5px;
+    padding-bottom:4px;
+    background-color:#1B77E0;
+    color:#ffffff;
+}
+#displaytable tr.alt td 
+{
+    color:#000000;
+    background-color:#EAF2D3;
+}
+
+#editbutton
+{
+    opacity:1.0;
+    filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+#editbutton:hover
+{
+    opacity:0.4;
+    filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+
+#deletebutton
+{
+    opacity:1.0;
+    filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+#deletebutton:hover
+{
+    opacity:0.4;
+    filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+
+#prev{
+    list-style-type:none;
+}
+
+#prev img{
+    width:40px;
+    height: 40px;
+}
+
+#prev:hover
+{
+    opacity:0.3;
+    filter:alpha(opacity=30); /* For IE8 and earlier */
+}
+
+#navlist{
+    height: 75px;
+}
+
+#banner {
+    width: 800px;
+    height: 300px;
+    position: relative;
+    border: 8px solid #eee;
+    left: 10%;
+    -webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.75);
+}
+
+#banner div {
+    position: absolute;
+}
+
+#banner div:nth-child(3) {
+    -webkit-animation: wipe 6s infinite;
+    -webkit-animation-delay: 3s;
+    -webkit-animation-direction: alternate;
+    -webkit-mask-size: 2000px 2000px;
+    -webkit-mask-image: -webkit-gradient(linear, left top, right bottom, 
+    color-stop(0.00,  rgba(0,0,0,1)),
+    color-stop(0.45,  rgba(0,0,0,1)),
+    color-stop(0.50,  rgba(0,0,0,0)),
+    color-stop(0.55,  rgba(0,0,0,0)),
+    color-stop(1.00,  rgba(0,0,0,0)));
+}
+
+@-webkit-keyframes wipe {
+    0% {
+            -webkit-mask-position: 0 0;
+    }
+    100% {
+            -webkit-mask-position: -1200px -1200px;
+    }
+}
+
+body{
+    height: 780px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    background-color: #fff;
+    height: 100%;
+}
+body {
+    color: #333333;
+    font: 0.75em/1.5em Arial,sans-serif;
+}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    width: 96%;
+}
+
+#content{
+    margin-left: 17.5%;
+    margin-top: 5%;
+    width: 1000px;
+    min-height: 350px;
+}
+
+#content h1{
+    padding: 10px 10px 10px 0px;
+}
+
+#content p{
+    font-family: Georgia, serif;
+    font-size: 13pt;
+}
+
+.errorblock {
+	color: #ff0000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
+}
+
+ input[type=submit], input[type=reset] {
+    color: white;
+    font-family: Georgia, serif;
+    font-size: 11pt;
+    padding:8px;
+    background-color:#0066FF;
+    border:1px solid #0066FF;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    border-bottom:1px solid #9f9f9f;
+    -moz-box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
+    -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
+    cursor:pointer;
+}
+
+input[type=submit]:hover {
+    background-color:#4D94FF;
+}
+
+input[type=reset]:hover {
+    background-color:#4D94FF;
+}
+
+/* Menu Navigation */
+.menu{
+    	margin: 0;
+        margin-left: 28%;
+	padding: 0;
+	border: none;
+	outline: none;    
+}
+
+.menu ul,
+.menu li,
+.menu a {
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+}
+
+.menu {
+	height: 40px;
+	width: 675px;
+
+	background: #4c4e5a;
+	background: -webkit-linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
+	background: -moz-linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
+	background: -o-linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
+	background: -ms-linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
+	background: linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.menu li {
+	position: relative;
+	list-style: none;
+	float: left;
+	display: block;
+	height: 40px;
+}
+
+.menu li a {
+	display: block;
+	padding: 0 14px;
+	margin: 6px 0;
+	line-height: 28px;
+	text-decoration: none;
+
+	border-left: 1px solid #393942;
+	border-right: 1px solid #4f5058;
+
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	font-size: 13px;
+
+	color: #f3f3f3;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.6);
+
+	-webkit-transition: color .2s ease-in-out;
+	-moz-transition: color .2s ease-in-out;
+	-o-transition: color .2s ease-in-out;
+	-ms-transition: color .2s ease-in-out;
+	transition: color .2s ease-in-out;
+}
+
+.menu li:first-child a { border-left: none; }
+.menu li:last-child a{ border-right: none; }
+
+.menu li:hover > a { color: #8fde62; }
+
+.menu ul {
+	position: absolute;
+	top: 40px;
+	left: 0;
+
+	opacity: 0;
+	background: #1f2024;
+
+	-webkit-border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
+
+	-webkit-transition: opacity .25s ease .1s;
+	-moz-transition: opacity .25s ease .1s;
+	-o-transition: opacity .25s ease .1s;
+	-ms-transition: opacity .25s ease .1s;
+	transition: opacity .25s ease .1s;
+}
+
+.menu li:hover > ul { opacity: 1; }
+
+.menu ul li {
+	height: 0;
+	overflow: hidden;
+	padding: 0;
+
+	-webkit-transition: height .25s ease .1s;
+	-moz-transition: height .25s ease .1s;
+	-o-transition: height .25s ease .1s;
+	-ms-transition: height .25s ease .1s;
+	transition: height .25s ease .1s;
+}
+
+.menu li:hover > ul li {
+	height: 36px;
+	overflow: visible;
+	padding: 0;
+}
+
+.menu ul li a {
+    width: 100px;
+    padding: 4px 0 4px 40px;
+    margin: 0;
+ 
+    border: none;
+    border-bottom: 1px solid #353539;
+}
+ 
+.menu ul li:last-child a { border: none; }
+
+.menu a.new { background: url('../images/new.png') no-repeat 6px center; }
+.menu a.view { background: url('../images/view.png') no-repeat 6px center; }
+.menu a.edit { background: url('../images/edit_menu.png') no-repeat 6px center; }
+.menu a.delete { background: url('../images/delete_menu.png') no-repeat 6px center; }

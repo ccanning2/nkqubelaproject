@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
@@ -14,9 +14,9 @@
 </head>
 
 <body onload='document.f.j_username.focus();'>
-<!-- <div id="header">
-    <a href=""><img src="resources/images/hotelmanagementsoftware.png" style="height: 150px; width: 500px;"/></a>
-</div><br> -->
+ <div id="header">
+     <br><a href=""><img src="resources/images/hospital_logo.png" style="height: 175px; width: 400px;"/></a>
+</div><br>
 <h2 style="text-align: center;">Please login into Hospital Management Software to continue.</h2>
 
 <c:if test="${not empty error}">

@@ -4,11 +4,13 @@
  */
 package hospital.app.factory;
 
+import hospital.model.embeddables.Contact;
 import hospital.model.entities.Department;
 import hospital.model.entities.Roles;
 import hospital.model.entities.Users;
 import hospital.model.md5.PasswordEncrypt;
 import java.security.NoSuchAlgorithmException;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,15 +21,21 @@ import java.util.logging.Logger;
 
 public class AppFactory 
 {
-    public static Department getDepartment(String name, Integer floorNumber, String description, Integer size, Long personInCharge) 
+    public static Department getDepartment(Map<String, String> stringValues, Integer floorNumber, Integer size, Long personInCharge) 
     {
         Department department = new Department();
+        Contact contact = new Contact();
         
         department.setDepartmentSize(size);
-        department.setDescription(description);
+        department.setDescription(stringValues.get("description"));
         department.setFloorNumber(floorNumber);
         department.setPersonInCharge(personInCharge);
-        department.setName(name);
+        department.setName(stringValues.get("name"));
+        
+        contact.setContactNumber(stringValues.get("contactNumber"));
+        contact.setContactNumber(stringValues.get("email"));
+        
+        department.setContact(contact);
         
         return department;
     }

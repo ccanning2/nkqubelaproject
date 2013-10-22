@@ -8,7 +8,7 @@
 
 <body>
     <div id="content"  style="margin-top: 175px;">
-        <p>HOME PAGE</p>
+        <p>ERROR PAGE</p>
     </div>
 
 <jsp:include page="hospital/footer/include.jsp" />
