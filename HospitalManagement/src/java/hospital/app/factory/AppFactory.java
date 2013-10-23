@@ -11,6 +11,7 @@ import hospital.model.entities.MedicalAid;
 import hospital.model.entities.Patient;
 import hospital.model.entities.Roles;
 import hospital.model.entities.Users;
+import hospital.model.entities.Ward;
 import hospital.model.md5.PasswordEncrypt;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
@@ -76,5 +77,21 @@ public class AppFactory
        
       
         return patient;
+    }
+     
+          public static Ward getWard(Map<String, String> stringValues, Integer floorNumber, Integer size, Long personInCharge) 
+    {
+        Ward ward = new Ward();
+    
+        
+        ward.setWardNmber(size);
+        ward.setDescription(stringValues.get("description"));
+        ward.setFloorNumber(floorNumber);
+        ward.setPersonInCharge(personInCharge);
+        ward.setName(stringValues.get("name"));
+        
+        
+        
+        return ward;
     }
 }
