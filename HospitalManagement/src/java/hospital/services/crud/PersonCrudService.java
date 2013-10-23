@@ -4,7 +4,7 @@
  */
 package hospital.services.crud;
 
-import hospital.model.entities.Patient;
+import hospital.model.entities.Person;
 import hospital.services.Service;
 
 /**
@@ -12,7 +12,7 @@ import hospital.services.Service;
  * @author Hospital Management
  */
 
-public interface PatientCrudService extends Service<Patient, Long> 
+public interface PersonCrudService extends Service<Person, Long> 
 {
     
 }

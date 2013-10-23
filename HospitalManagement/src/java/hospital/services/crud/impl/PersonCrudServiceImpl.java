@@ -4,9 +4,10 @@
  */
 package hospital.services.crud.impl;
 
-import hospital.model.entities.Patient;
+import hospital.model.entities.Person;
+import hospital.model.entities.StaffMember;
 import hospital.repository.GenericDAO;
-import hospital.services.crud.PatientCrudService;
+import hospital.services.crud.PersonCrudService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,46 +17,46 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author Hospital Management
  */
-@Service("patientCrudService")
+@Service("personCrudService")
 @Transactional
-public class PatientCrudServiceImpl implements PatientCrudService {
+public class PersonCrudServiceImpl implements PersonCrudService {
 
     @Autowired
-    private GenericDAO<Patient> dao;
+    private GenericDAO<Person> dao;
 
-    public final void setDao(final GenericDAO<Patient> daoToSet) {
+    public final void setDao(final GenericDAO<Person> daoToSet) {
         this.dao = daoToSet;
-        this.dao.setClass(Patient.class);
+        this.dao.setClass(Person.class);
     }
 
-    public PatientCrudServiceImpl() {
+    public PersonCrudServiceImpl() {
     }
     
     @Override
-    public Patient findById(Long id) {
+    public Person findById(Long id) {
         setDao(dao);
         return dao.findById(id);
     }
     @Override
-    public List<Patient> findAll() {
+    public List<Person> findAll() {
         setDao(dao);
         return dao.findAll();
     }
 
     @Override
-    public void persist(Patient entity) {
+    public void persist(Person entity) {
         setDao(dao);
         dao.persist(entity);
     }
 
     @Override
-    public void merge(Patient entity) {
+    public void merge(Person entity) {
         setDao(dao);
         dao.merge(entity);
     }
 
     @Override
-    public void remove(Patient entity) {
+    public void remove(Person entity) {
         setDao(dao);
         dao.remove(entity);
     }
@@ -63,12 +64,12 @@ public class PatientCrudServiceImpl implements PatientCrudService {
     @Override
     public void removeById(Long entityId) {
         setDao(dao);
-        Patient v = dao.findById(entityId);
+        Person v = dao.findById(entityId);
         dao.remove(v);
     }
 
     @Override
-    public List<Patient> findInRange(int firstResult, int maxResults) {
+    public List<Person> findInRange(int firstResult, int maxResults) {
         setDao(dao);
         return dao.findInRange(firstResult, maxResults);
 
@@ -80,13 +81,13 @@ public class PatientCrudServiceImpl implements PatientCrudService {
     }
     
     @Override
-    public Patient getByPropertyName(String name, String value) {
+    public Person getByPropertyName(String name, String value) {
         setDao(dao);
         return dao.getByPropertyName(name, value);
     }
 
     @Override
-    public List<Patient> getEntitiesByPropertyName(String name, String value) {
+    public List<Person> getEntitiesByPropertyName(String name, String value) {
         setDao(dao);
         return dao.getEntitiesByPropertyName(name, value);
     }

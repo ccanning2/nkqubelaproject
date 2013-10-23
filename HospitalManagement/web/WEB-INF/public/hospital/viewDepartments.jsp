@@ -18,8 +18,6 @@
             <th>Department Description</th>   
             <th>Department Size</th>   
             <th>Person In Charge</th>
-            <th>Email Address</th>
-            <th>Contact Number</th>
             <th></th>   
             <th></th>   
                 <c:forEach var="department" items="${departments}"> 
@@ -31,29 +29,23 @@
                             ${department.description}
                         </td> 
                         <td align="center">
-                            ${department.departmentSize}
+                            ${department.departmentSize}&#160;Patients
                         </td> 
                         <td align="center">
-                            <a href="viewStaffMember.html?pk=${department.personInCharge}">${department.personInCharge}</a>
-                        </td> 
-                        <td align="center">
-                            ${department.contact.emailAddress}
-                        </td> 
-                        <td align="center">
-                            ${department.contact.contactNumber}
-                        </td>                        
+                            <a href="viewStaffMember.html?pk=${department.personInCharge.id}">${department.personInCharge.name.firstName}&#160;${department.personInCharge.name.lastName}</a>
+                        </td>                     
                         <td align="center">
                             <a href="editDepartment.html?pk=${department.id}"><img id="editbutton" src="resources/images/edit.png" style="height: 20px; width: 20px;"/></a>
                         </td> 
                         <td align="center">
-                            <a href="deleteDepartment.html?pk=${department.id}"><img id="deletebutton" src="resources/images/delete.png" style="height: 20px; width: 20px;"</a>
+                            <a href="deleteDepartmentFromTable.html?pk=${department.id}"><img id="deletebutton" src="resources/images/delete.png" style="height: 20px; width: 20px;"</a>
                         </td> 
                     </tr>
                 </c:forEach>
             </table>           
         </c:when>
         <c:otherwise>
-            <label>There are no departments to display</label>
+            <label>There are no departments to display, <a href="addDepartment.html">Click here</a> to create a new Department.</label>
         </c:otherwise>
     </c:choose>
 

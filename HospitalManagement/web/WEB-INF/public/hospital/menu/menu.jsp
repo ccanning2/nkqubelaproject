@@ -1,6 +1,6 @@
 <ul class="menu">
 
-	<li><a href="#">Home</a></li>
+	<li><a href="/HospitalManagement">Home</a></li>
         <li><a href="about.html">About Hospital Management</a></li>
 	<li>
             <a href="#">Departments</a>
@@ -29,9 +29,9 @@
         <li>
             <a href="#">Staff Members</a>
             <ul>
-                <li><a href="addPatient.html" class="new">New</a></li>
-                <li><a href="viewPatient.html" class="view">View</a></li>
-                <li><a href="deletePatient.html" class="delete">Delete</a></li>
+                <li><a href="addStaffMember.html" class="new">New</a></li>
+                <li><a href="viewStaffMembers.html" class="view">View</a></li>
+                <li><a href="deleteStaffMember.html" class="delete">Delete</a></li>
             </ul>
 	</li>
 </ul>

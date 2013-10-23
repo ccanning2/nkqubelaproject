@@ -4,15 +4,18 @@
  */
 package hospital.model.entities;
 
+import hospital.model.embeddables.Contact;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -30,10 +33,49 @@ public class Ward implements Serializable {
     @JoinColumn(name="patient_id")
     private List<Patient> patients;
     
+    private String name;
     private Integer wardNumber;
-    private Integer amountOfPatients;
     private Integer floorNumber;
-    private Long personInCharge;
+    private String visitingHoursStart;
+    private String visitingHoursEnd;
+
+    @Embedded
+    private Contact contact;
+    
+    @OneToOne
+    private Person personInCharge;    
+    
+    public String getVisitingHoursStart() {
+        return visitingHoursStart;
+    }
+
+    public void setVisitingHoursStart(String visitingHoursStart) {
+        this.visitingHoursStart = visitingHoursStart;
+    }
+
+    public String getVisitingHoursEnd() {
+        return visitingHoursEnd;
+    }
+
+    public void setVisitingHoursEnd(String visitingHoursEnd) {
+        this.visitingHoursEnd = visitingHoursEnd;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
+    }
 
     public Integer getWardNumber() {
         return wardNumber;
@@ -41,14 +83,6 @@ public class Ward implements Serializable {
 
     public void setWardNumber(Integer wardNumber) {
         this.wardNumber = wardNumber;
-    }
-
-    public Integer getAmountOfPatients() {
-        return amountOfPatients;
-    }
-
-    public void setAmountOfPatients(Integer amountOfPatients) {
-        this.amountOfPatients = amountOfPatients;
     }
 
     public Integer getFloorNumber() {
@@ -59,11 +93,11 @@ public class Ward implements Serializable {
         this.floorNumber = floorNumber;
     }
 
-    public Long getPersonInCharge() {
+    public Person getPersonInCharge() {
         return personInCharge;
     }
 
-    public void setPersonInCharge(Long personInCharge) {
+    public void setPersonInCharge(Person personInCharge) {
         this.personInCharge = personInCharge;
     }
 

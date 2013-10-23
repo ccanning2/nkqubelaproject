@@ -4,7 +4,10 @@
  */
 
 import hospital.app.factory.AppFactory;
+import hospital.model.entities.Person;
+import hospital.model.entities.StaffMember;
 import hospital.model.entities.Ward;
+import hospital.services.crud.StaffMemberCrudService;
 import hospital.services.crud.WardCrudService;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +29,7 @@ import org.testng.annotations.Test;
 public class WardCrudTest {
     
     private static WardCrudService wardCrudService;
+    private static StaffMemberCrudService staffMemberCrudService;
     private static long id;    
     private static ApplicationContext ctx;
     
@@ -36,6 +40,10 @@ public class WardCrudTest {
     public void testWardCreate(){
         System.out.println("---TESTWARDCREATE---");
         Ward ward;
+        StaffMember staffMember = new StaffMember();
+        
+        staffMemberCrudService.persist(staffMember);
+        
         
         Map<String, String> stringValues = new HashMap<String, String>();
         
@@ -44,9 +52,7 @@ public class WardCrudTest {
         stringValues.put("email", "icu@hospital.co.za");
         stringValues.put("contactNumber", "0878006584");        
         
-        ward = AppFactory.getWard(stringValues, 1, 100, (long)1);
-        
-        //String Map -> name, description, email address,contact number
+        ward = AppFactory.getWard(stringValues, 1, 100, staffMember);
         
         wardCrudService.persist(ward);
         
@@ -73,9 +79,12 @@ public class WardCrudTest {
     public void testWardUpdate(){
         System.out.println("---TESTWARD---");
         Ward ward = wardCrudService.findById(id);
+        StaffMember staffMember = new StaffMember();
+        
+        staffMemberCrudService.persist(staffMember);
         
         ward.setWardNumber(250);
-        ward.setPersonInCharge("Mary");
+        ward.setPersonInCharge(staffMember);
         
         wardCrudService.merge(ward);
         

@@ -5,25 +5,11 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        jQuery("#medicalAidDetails").hide();
-    });
-    
-    function showMedicalAidDetails(){
-        if(jQuery("#medicalAidDetails").show() == true){
-            jQuery("#medicalAidDetails").hide();
-        }else{
-            jQuery("#medicalAidDetails").show();
-        }
-    }
-</script>
 
 <body>
 <div id="content">
-    <h1>ADD PATIENT</h1><br>
-    <f:form action="persistPatient.php" method="POST" modelAttribute="patientModel">  
+    <h1>ADD STAFF MEMBER:</h1><br>
+    <f:form action="persistStaffMember.php" method="POST" modelAttribute="staffMemberModel">  
         <label>First Name: </label> <br/>
         <f:input path="firstName" type="text"/> <br/>
         <label>Last Name: </label> <br/>
@@ -38,6 +24,12 @@
         <f:input path="contactNumber" type="text"/> <br/>
         <label> Identity Number: </label> <br/>
         <f:input path="identityNumber" type="text"/> <br/>
+        <label> Type: </label> <br/>
+        <f:input path="type" type="text"/> <br/>
+        <label> Start Time: </label> <br/>
+        <f:input path="startTime" type="time"/> <br/>
+        <label> End Time: </label> <br/>
+        <f:input path="endTime" type="time"/> <br/>
         <%--
             <label>Date Of Birth:  </label> <br/>
             <f:input path="dateOfBirth" id="date" type="text"/> --%> <br/><br/>
@@ -81,25 +73,10 @@
         <%-- <label>Date of arrival:  </label> <br/>
              <f:input path="dateOfArrival" id="date" type="text"/> <br/>
         --%>
-        <label>Current Condition: </label> <br/>
-        <f:input path="currentCondition" type="text"/> <br/><br/>
-        <label>Has Medical Aid: </label> <br/>
-        <f:checkbox path="hasMedicalAid" onclick="showMedicalAidDetails()"/><br/>
-        <div id="medicalAidDetails">
-            <label>Medical Aid Number: </label> <br/>
-            <f:input path="medicalAidNumber" type="text" /> <br/>
-            <label>Medical Aid Name: </label> <br/>
-            <f:input path="medicalAidName" type="text" /> <br/>
-            <label>Medical Aid Scheme: </label> <br/>
-            <f:input path="medicalAidScheme" type="text" /> <br/>
-        </div>
-        <label>Patient number: </label> <br/>
-        <f:input path="patientNumber" type="text" /> <br/>
-        <label>Reason for stay: </label> <br/>
-        <f:input path="reasonForStay" type="text" /> <br/>        
-        <input type="submit" value="Create Patient"/>
+           
+        <input type="submit" value="Create Staff Member"/>
         <input type="reset" value="Reset Fields"/>
     </f:form>
 </div>
 
-<jsp:include page="footer/include.jsp" /> 
+<jsp:include page="footer/include.jsp" />

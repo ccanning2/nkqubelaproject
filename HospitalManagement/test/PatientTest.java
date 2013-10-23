@@ -6,6 +6,7 @@
 import hospital.app.factory.AppFactory;
 import hospital.model.entities.Patient;
 import hospital.services.crud.PatientCrudService;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.context.ApplicationContext;
@@ -47,9 +48,7 @@ public class PatientTest {
         stringValues.put("reasonForStay", "CANCER");
         
        
-        patient = AppFactory.getPatient(stringValues,1,(long)111);
-        
-       
+        patient = AppFactory.getPatient(stringValues,1,(long)111, new Date(), new Date(), false);
         
         patientCrudService.persist(patient);
         
@@ -66,15 +65,11 @@ public class PatientTest {
         System.out.println("id: " + patient.getId());
         System.out.println("bedNumber: " + patient.getBedNumber());
         System.out.println("dateOfArrival: " + patient.getDateOfArrival());
-      
-        
-        System.out.println("name: " + patient.getFName());
+        System.out.println("name: " + patient.getFullName());
         System.out.println("dateOfArrival: " + patient.getDateOfArrival());
         System.out.println("medicalAidId: " + patient.getMedicalAid());
         System.out.println("patientNumber: " + patient.getPatientNumber());
         System.out.println("reasonForStay: " + patient.getReasonForStay());
-        
-       
         
         Assert.assertEquals(patient.getId(), "4");
     }
@@ -85,11 +80,11 @@ public class PatientTest {
        Patient patient = patientCrudService.findById(id);
         
         patient.setCurrentCondition("CANCER");
-        patient.setFName("JOHN");
+        patient.getName().setFirstName("JOHN");
         
         patientCrudService.merge(patient);
         
-        Assert.assertEquals(patient.getFName(), "JOHN");
+        Assert.assertEquals(patient.getFullName(), "JOHN");
     }
     
     @Test(enabled = false, priority = 4)

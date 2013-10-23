@@ -8,11 +8,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <script type="text/javascript">
-    function checkWardName(){
-        var name = document.getElementById("wardNameDD").value;
+    function checkPatientName(){
+        var name = document.getElementById("patientNameDD").value;
         
         if(name == 0){
-            alert('Please make sure you choose a ward to delete');
+            alert('Please make sure you choose a patient to delete');
             return false;
         }else{
             return true;
@@ -22,21 +22,20 @@
 
 <body>
 <div id="content">
-        <h1>Delete A Ward</h1><br>        
-        <f:form action="removeWard.php" method="GET" modelAttribute="wardModel">               
+        <h1>Delete A Patient</h1><br>        
+        <f:form action="removePatient.php" method="GET" modelAttribute="patientModel">               
             <c:choose>
-                <c:when test="${fn:length(wardList) > 0}">
+                <c:when test="${fn:length(patientList) > 0}">
                     <div class="control-group warning">
-                        <label> Ward Name: </label><br/> 
-                        <f:select id="wardNameDD" path="id">
-                            
-                            <f:options items="${wardList}" itemValue="id" itemLabel="name" />
+                        <label> Patient Name: </label><br/> 
+                        <f:select id="patientNameDD" path="id">                            
+                            <f:options items="${patientList}" itemValue="id" itemLabel="fullName" />
                         </f:select>        <br><br>           
-                        <input type="submit" value="Delete Ward" onclick="return checkWardName();"/>
+                        <input type="submit" value="Delete Patient" onclick="return checkPatientName();"/>
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <label>There are no wards to display, to create a new ward, <a href="addWard.html">Click here</a></label>
+                    <label>There are no patients to display, to create a new patient, <a href="addPatient.html">Click here</a></label>
                 </c:otherwise>                
             </c:choose>            
         </f:form>

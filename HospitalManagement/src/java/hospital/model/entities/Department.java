@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -32,7 +33,10 @@ public class Department implements Serializable {
     private Integer floorNumber;
     private String description;
     private Integer departmentSize;
-    private Long personInCharge;
+    
+    @OneToOne
+    @JoinColumn(name = "person_in_charge_id")
+    private StaffMember personInCharge;
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="staff_member_id")
@@ -77,11 +81,11 @@ public class Department implements Serializable {
         this.departmentSize = departmentSize;
     }
 
-    public Long getPersonInCharge() {
+    public StaffMember getPersonInCharge() {
         return personInCharge;
     }
 
-    public void setPersonInCharge(Long personInCharge) {
+    public void setPersonInCharge(StaffMember personInCharge) {
         this.personInCharge = personInCharge;
     }
 

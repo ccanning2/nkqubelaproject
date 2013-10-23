@@ -8,7 +8,7 @@
 
 <body>
 <div id="content">
-    <h1>Add Department</h1><br>
+    <h1>Edit Department</h1><br>
      <f:form action="mergeDepartment.php" method="POST" modelAttribute="departmentModel">  
         <label> Department Name: </label> <br/>
         <f:input path="name" type="text"/> <br/>
@@ -19,7 +19,9 @@
         <label> Department Floor Number: </label> <br/>
         <f:input path="floorNumber" /> <br/>
         <label> Person in charge: </label> <br/>
-        <f:input path="personInCharge" /> <br/>
+        <f:select path="personInCharge">
+            <f:options items="${personInChargeList}" itemValue="id" itemLabel="fullName" />
+        </f:select><br/><br/>
         <label> Contact Number: </label> <br/>
         <f:input path="contactNumber"/> <br/>
         <label> Email Address: </label> <br/>

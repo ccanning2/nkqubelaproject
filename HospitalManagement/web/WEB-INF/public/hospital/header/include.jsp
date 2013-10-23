@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Cache-Control" content="no-cache"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link type="image/ico" rel="icon" href="<c:url value="/resources/images/hotelmanagement.png" />" />
+    <link type="image/ico" rel="icon" href="<c:url value="/resources/images/hospital_icon.png" />" />
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/styles/style.css" />" />
 </head>
 

@@ -4,10 +4,7 @@
  */
 package hospital.presentation.models;
 
-import hospital.model.entities.Patient;
-import hospital.model.entities.Ward;
-import javax.persistence.metamodel.ListAttribute;
-import javax.persistence.metamodel.SingularAttribute;
+import hospital.model.entities.Person;
 
 
 /**
@@ -17,33 +14,68 @@ import javax.persistence.metamodel.SingularAttribute;
 
 public class WardModel
 {
-   private long patients;
-   private String floorNumber;
-   private String personInCharge;
-   private Integer wardNumber;
-   private Integer amountOfPatients;
+    private String name;
+    private Integer floorNumber;
+    private Person personInCharge;
+    private Integer wardNumber;
+    private String emailAddress;
+    private String contactNumber;
+    private String visitingHoursStart;
+    private String visitingHoursEnd;
 
-    public long getPatients() {
-        return patients;
+    public String getVisitingHoursStart() {
+        return visitingHoursStart;
     }
 
-    public void setPatients(long patients) {
-        this.patients = patients;
+    public void setVisitingHoursStart(String visitingHoursStart) {
+        this.visitingHoursStart = visitingHoursStart;
     }
 
-    public String getFloorNumber() {
+    public String getVisitingHoursEnd() {
+        return visitingHoursEnd;
+    }
+
+    public void setVisitingHoursEnd(String visitingHoursEnd) {
+        this.visitingHoursEnd = visitingHoursEnd;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getFloorNumber() {
         return floorNumber;
     }
 
-    public void setFloorNumber(String floorNumber) {
+    public void setFloorNumber(Integer floorNumber) {
         this.floorNumber = floorNumber;
     }
 
-    public String getPersonInCharge() {
+    public Person getPersonInCharge() {
         return personInCharge;
     }
 
-    public void setPersonInCharge(String personInCharge) {
+    public void setPersonInCharge(Person personInCharge) {
         this.personInCharge = personInCharge;
     }
 
@@ -54,13 +86,4 @@ public class WardModel
     public void setWardNumber(Integer wardNumber) {
         this.wardNumber = wardNumber;
     }
-
-    public Integer getAmountOfPatients() {
-        return amountOfPatients;
-    }
-
-    public void setAmountOfPatients(Integer amountOfPatients) {
-        this.amountOfPatients = amountOfPatients;
-    }
- 
 }

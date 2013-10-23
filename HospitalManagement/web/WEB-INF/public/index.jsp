@@ -7,8 +7,8 @@
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 
 <body>
-    <div id="content"  style="margin-top: 175px;">
-        <p>HOME PAGE</p>
+    <div id="content">
+        <img src="resources/images/hospital.jpg" style="border: 3px solid #1f2024;" width="700px;" height="400px;"/>
     </div>
 
 <jsp:include page="hospital/footer/include.jsp" />

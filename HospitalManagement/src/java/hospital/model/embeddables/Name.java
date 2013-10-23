@@ -18,6 +18,9 @@ public class Name implements Serializable{
     private String middleName;
     private String lastName;
     private String nickName;
+    
+    public Name(){
+    }
 
     public String getFirstName() {
         return firstName;

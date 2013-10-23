@@ -4,6 +4,8 @@
  */
 package hospital.presentation.models;
 
+import hospital.model.entities.StaffMember;
+
 
 /**
  *

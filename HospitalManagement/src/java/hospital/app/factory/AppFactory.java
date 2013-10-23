@@ -5,11 +5,14 @@
 package hospital.app.factory;
 
 import hospital.model.embeddables.Contact;
+import hospital.model.embeddables.Demographic;
 import hospital.model.embeddables.Name;
 import hospital.model.entities.Department;
 import hospital.model.entities.MedicalAid;
 import hospital.model.entities.Patient;
+import hospital.model.entities.Person;
 import hospital.model.entities.Roles;
+import hospital.model.entities.StaffMember;
 import hospital.model.entities.Users;
 import hospital.model.entities.Ward;
 import hospital.model.md5.PasswordEncrypt;
@@ -26,7 +29,7 @@ import java.util.logging.Logger;
 
 public class AppFactory 
 {
-    public static Department getDepartment(Map<String, String> stringValues, Integer floorNumber, Integer size, Long personInCharge) 
+    public static Department getDepartment(Map<String, String> stringValues, Integer floorNumber, Integer size, StaffMember personInCharge) 
     {
         Department department = new Department();
         Contact contact = new Contact();
@@ -65,32 +68,87 @@ public class AppFactory
         
         return role;
     }
-     public static Patient getPatient(Map<String, String> stringValues,long bedNumber, long patientNumber) 
+    
+    public static Patient getPatient(Map<String, String> stringValues, final long bedNumber, final long patientNumber, final Date dateOfArrival, final Date dateOfBirth, final Boolean hasMedicalAid) 
     {
         Name name = new Name();
+        Contact contact = new Contact();
         Patient patient = new Patient();
+        Demographic demographic = new Demographic();
        
+        name.setFirstName(stringValues.get("firstName"));
+        name.setLastName(stringValues.get("lastName"));
+        name.setMiddleName(stringValues.get("middleName"));
+        name.setNickName(stringValues.get("nickName"));
+        
+        contact.setContactNumber(stringValues.get("contactNumber"));
+        contact.setEmailAddress(stringValues.get("emailAddress"));
+        
+        demographic.setDateOfBirth(dateOfBirth);
+        demographic.setGender(stringValues.get("gender"));
+        demographic.setRace(stringValues.get("race"));
+        demographic.setTitle(stringValues.get("title"));
+        
+        if(hasMedicalAid == true){
+                        
+        }
+        
         patient.setName(name);
+        patient.setContact(contact);
+        patient.setDemographic(demographic);
         patient.setBedNumber(bedNumber);
         patient.setPatientNumber(patientNumber);
-        patient.setReasonForStay("reasonForStay");
-       
+        patient.setReasonForStay(stringValues.get("reasonForStay"));
+        patient.setIdentityNumber(stringValues.get("identityNumber"));
+        patient.setEstimatedDateOfArrival(dateOfArrival);
+        patient.setCurrentCondition(stringValues.get("currentCondition"));
       
         return patient;
     }
+    
+    public static StaffMember getStaffMember(Map<String, String> stringValues, final String staffNumber, Date dateOfBirth) 
+    {
+        Name name = new Name();
+        Contact contact = new Contact();
+        StaffMember staffMember = new StaffMember();
+        Demographic demographic = new Demographic();
+       
+        name.setFirstName(stringValues.get("firstName"));
+        name.setLastName(stringValues.get("lastName"));
+        name.setMiddleName(stringValues.get("middleName"));
+        name.setNickName(stringValues.get("nickName"));
+        
+        contact.setContactNumber(stringValues.get("contactNumber"));
+        contact.setEmailAddress(stringValues.get("emailAddress"));
+        
+        demographic.setDateOfBirth(dateOfBirth);
+        demographic.setGender(stringValues.get("gender"));
+        demographic.setRace(stringValues.get("race"));
+        demographic.setTitle(stringValues.get("title"));
+
+        staffMember.setName(name);
+        staffMember.setContact(contact);
+        staffMember.setDemographic(demographic);
+        staffMember.setStaffNumber(staffNumber);
+      
+        return staffMember;
+    }
      
-          public static Ward getWard(Map<String, String> stringValues, Integer floorNumber, Integer size, Long personInCharge) 
+    public static Ward getWard(Map<String, String> stringValues, Integer floorNumber, Integer wardNumber, Person personInCharge) 
     {
         Ward ward = new Ward();
-    
+        Contact contact = new Contact();
         
-        ward.setWardNmber(size);
-        ward.setDescription(stringValues.get("description"));
+        contact.setContactNumber(stringValues.get("contactNumber"));
+        contact.setEmailAddress(stringValues.get("emailAddress"));
+
+        ward.setName(stringValues.get("name"));
+        ward.setContact(contact);
+        ward.setWardNumber(wardNumber);
         ward.setFloorNumber(floorNumber);
         ward.setPersonInCharge(personInCharge);
-        ward.setName(stringValues.get("name"));
-        
-        
+        ward.setVisitingHoursStart(stringValues.get("visitingHoursStart"));
+        ward.setVisitingHoursEnd(stringValues.get("visitingHoursEnd"));
         
         return ward;
     }

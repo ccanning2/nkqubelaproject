@@ -7,7 +7,7 @@
 
 h1{
     color: black;
-    font-size: 24pt;
+    font-size: 20pt;
     font-family: Georgia, serif;
 }
 
@@ -20,7 +20,7 @@ h1{
 }
 
 #footer{
-    background-color: #1B77E0;
+    background-color: #63b038;
     color: white;
     text-decoration: none;
     margin-top: 13%;
@@ -177,8 +177,8 @@ body {
 }
 
 #content{
-    margin-left: 17.5%;
-    margin-top: 5%;
+    margin-left: 28%;
+    margin-top: 3%;
     width: 1000px;
     min-height: 350px;
 }
@@ -203,10 +203,10 @@ body {
  input[type=submit], input[type=reset] {
     color: white;
     font-family: Georgia, serif;
-    font-size: 11pt;
-    padding:8px;
-    background-color:#0066FF;
-    border:1px solid #0066FF;
+    font-size: 9pt;
+    padding:5px;
+    background-color:#63b038;
+    border:1px solid #63b038;
     -moz-border-radius:10px;
     -webkit-border-radius:10px;
     border-radius:10px;
@@ -217,12 +217,29 @@ body {
     cursor:pointer;
 }
 
+input[type="text"], select, input[type="number"], input[type="email"], input[type="time"], input[type="password"]
+{
+    font-size: 12pt;
+    border: 5px solid white; 
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 8px  rgba(0,0,0,0.1), 0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: inset 0 0 8px  rgba(0,0,0,0.1), 0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: inset 0 0 8px  rgba(0,0,0,0.1), 0 0 16px rgba(0,0,0,0.1); 
+    padding: 5px;
+    background-color: #F0F0F0;
+    margin: 0 0 10px 0;
+}
+
 input[type=submit]:hover {
-    background-color:#4D94FF;
+    background-color:#8fde62;
 }
 
 input[type=reset]:hover {
-    background-color:#4D94FF;
+    background-color:#8fde62;
+}
+
+label{
+    font-size: 11pt;
 }
 
 /* Menu Navigation */
@@ -245,7 +262,7 @@ input[type=reset]:hover {
 
 .menu {
 	height: 40px;
-	width: 675px;
+	width: 700px;
 
 	background: #4c4e5a;
 	background: -webkit-linear-gradient(top, #4c4e5a 0%,#2c2d33 100%);
@@ -277,9 +294,9 @@ input[type=reset]:hover {
 	border-left: 1px solid #393942;
 	border-right: 1px solid #4f5058;
 
-	font-family: Helvetica, Arial, sans-serif;
+        font-family: Georgia;
 	font-weight: bold;
-	font-size: 13px;
+	font-size: 12px;
 
 	color: #f3f3f3;
 	text-shadow: 1px 1px 1px rgba(0,0,0,.6);
@@ -348,5 +365,8 @@ input[type=reset]:hover {
 
 .menu a.new { background: url('../images/new.png') no-repeat 6px center; }
 .menu a.view { background: url('../images/view.png') no-repeat 6px center; }
-.menu a.edit { background: url('../images/edit_menu.png') no-repeat 6px center; }
 .menu a.delete { background: url('../images/delete_menu.png') no-repeat 6px center; }
+
+.menu a.new:hover { background: url('../images/new_hover.png') no-repeat 6px center; }
+.menu a.view:hover { background: url('../images/view_hover.png') no-repeat 6px center; }
+.menu a.delete:hover { background: url('../images/delete_hover.png') no-repeat 6px center; }
