@@ -57,9 +57,9 @@ public class UserCrudTest {
         List<Roles> roles3 = new ArrayList<Roles>();
         List<Roles> roles4 = new ArrayList<Roles>();
         
-        Roles role1 = AppFactory.getRoles("General", "Administration rights allowed", "chris");
-        Roles role2 = AppFactory.getRoles("General", "Administration rights allowed", "kevin");
-        Roles role3 = AppFactory.getRoles("General", "Administration rights allowed", "gizelle");
+        Roles role1 = AppFactory.getRoles("Manager", "Administration rights allowed", "chris");
+        Roles role2 = AppFactory.getRoles("Supervisor", "Administration rights allowed", "kevin");
+        Roles role3 = AppFactory.getRoles("Manager", "Administration rights allowed", "gizelle");
         Roles role4 = AppFactory.getRoles("General", "Administration rights allowed", "enzo");
         
         roles1.add(role1);

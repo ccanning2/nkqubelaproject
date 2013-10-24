@@ -158,7 +158,6 @@ public class WardController {
     {
         if (result.hasErrors()) 
         {
-            System.out.println("ERRORS: " + result.getAllErrors());
             return "error";
         }
         

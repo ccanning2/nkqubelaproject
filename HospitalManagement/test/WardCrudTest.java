@@ -11,6 +11,7 @@ import hospital.model.entities.Ward;
 import hospital.services.crud.DepartmentCrudService;
 import hospital.services.crud.StaffMemberCrudService;
 import hospital.services.crud.WardCrudService;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.context.ApplicationContext;
@@ -43,57 +44,75 @@ public class WardCrudTest {
     public void testWardCreate(){
         System.out.println("---TESTWARDCREATE---");
         Ward ward;
-        StaffMember staffMember = new StaffMember();
-        Department department = new Department();
-        
-        staffMemberCrudService.persist(staffMember);
-        departmentCrudService.persist(department);
+        StaffMember staffMember;
+        Department department;
         
         Map<String, String> stringValues = new HashMap<String, String>();
         
-        stringValues.put("name", "ICU");
-        stringValues.put("visitingHoursStart", "18:00");
-        stringValues.put("visitingHoursEnd", "19:00");
-        stringValues.put("emailAddress", "icu@hospital.co.za");
-        stringValues.put("contactNumber", "0215576254");             
+        stringValues.put("firstName", "James");
+        stringValues.put("lastName", "Smith");
+        stringValues.put("middleName", "John");
+        stringValues.put("nickName", "Johnny");
+        stringValues.put("contactNumber", "0215577845");
+        stringValues.put("emailAddress", "john@examplehospital.co.za");
+        stringValues.put("gender", "Male");
+        stringValues.put("race", "White");
+        stringValues.put("title", "Mr");
+        stringValues.put("identityNumber", "8595625214855");     
         
-        ward = AppFactory.getWard(stringValues, 1, 100, staffMember, department);
+        staffMember = AppFactory.getStaffMember(stringValues, "8859855", new Date());
+
+        Map<String, String> stringValues2 = new HashMap<String, String>();
+
+        stringValues2.put("name", "A1");
+        stringValues2.put("description", "Children's Ward");
+        stringValues2.put("email", "a1children@examplehospital.co.za");
+        stringValues2.put("contactNumber", "0215589652"); 
+        
+        staffMemberCrudService.persist(staffMember);
+        
+        department = AppFactory.getDepartment(stringValues2, 1, 285, staffMember);
+
+        departmentCrudService.persist(department);
+        
+        Map<String, String> stringValues3 = new HashMap<String, String>();
+        
+        stringValues3.put("name", "Maternity Department");
+        stringValues3.put("visitingHoursStart", "18:00");
+        stringValues3.put("visitingHoursEnd", "19:00");
+        stringValues3.put("emailAddress", "maternity@examplehospital.co.za");
+        stringValues3.put("contactNumber", "0215576254");             
+        
+        ward = AppFactory.getWard(stringValues3, 1, 100, staffMember, department);
         
         wardCrudService.persist(ward);
         
         id = ward.getId();
-        
-        System.out.println("testWardCreate: id = " + id);
     }
     
     @Test(priority = 2)
     public void testWardRead(){        
         System.out.println("---TESTWARD---");
         Ward ward = wardCrudService.findById(id);
-
-        System.out.println("Patients: " + ward.getPatients());
+        
         System.out.println("Floor Number: " + ward.getFloorNumber());
         System.out.println("Person in charge: " + ward.getPersonInCharge());
         System.out.println("Ward Number: " + ward.getWardNumber());        
-        
 
-        Assert.assertEquals(ward.getPatients(), "ICU");
+        Assert.assertEquals(ward.getName(), "Maternity Department");
     }
     
     @Test(priority = 3)
     public void testWardUpdate(){
         System.out.println("---TESTWARD---");
         Ward ward = wardCrudService.findById(id);
-        StaffMember staffMember = new StaffMember();
-        
-        staffMemberCrudService.persist(staffMember);
         
         ward.setWardNumber(250);
-        ward.setPersonInCharge(staffMember);
+        ward.setFloorNumber(3);
         
         wardCrudService.merge(ward);
         
-        Assert.assertEquals(ward.getPersonInCharge(), "Mary");
+        Assert.assertEquals(ward.getWardNumber(), 250);
     }
     
     @Test(enabled = false, priority = 4)
@@ -109,6 +128,8 @@ public class WardCrudTest {
     public static void setUpClass() throws Exception {
         ctx = new ClassPathXmlApplicationContext("classpath:hospital/app/config/applicationContext-connection.xml");
         wardCrudService = (WardCrudService) ctx.getBean("wardCrudService");
+        staffMemberCrudService = (StaffMemberCrudService) ctx.getBean("staffMemberCrudService");
+        departmentCrudService = (DepartmentCrudService) ctx.getBean("departmentCrudService");
     }
 
     @AfterClass
