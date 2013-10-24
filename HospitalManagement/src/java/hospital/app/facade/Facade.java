@@ -6,6 +6,7 @@ package hospital.app.facade;
 
 import hospital.app.config.GetContext;
 import hospital.services.crud.DepartmentCrudService;
+import hospital.services.crud.MedicalAidCrudService;
 import hospital.services.crud.PatientCrudService;
 import hospital.services.crud.PersonCrudService;
 import hospital.services.crud.StaffMemberCrudService;
@@ -25,6 +26,7 @@ public class Facade implements Serializable {
     private StaffMemberCrudService staffMemberCrudService;    
     private PatientCrudService patientCrudService;    
     private WardCrudService wardCrudService;    
+    private MedicalAidCrudService medicalAidCrudService;    
 
     public DepartmentCrudService getDepartmentCrudService() {
         departmentCrudService = (DepartmentCrudService) ctx.getBean("departmentCrudService");
@@ -49,5 +51,10 @@ public class Facade implements Serializable {
     public WardCrudService getWardCrudService() {
         wardCrudService = (WardCrudService) ctx.getBean("wardCrudService");
         return wardCrudService;
+    }
+    
+    public MedicalAidCrudService getMedicalAidCrudService() {
+        medicalAidCrudService = (MedicalAidCrudService) ctx.getBean("medicalAidCrudService");
+        return medicalAidCrudService;
     }
 }

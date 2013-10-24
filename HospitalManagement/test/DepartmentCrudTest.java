@@ -45,7 +45,6 @@ public class DepartmentCrudTest {
         System.out.println("---TESTDEPARTMENTCREATE---");
         Department department;
         
-        /* TODO: Once Enzo has completed StaffMember & Patient services -> move to app factory */
         StaffMember staffMember = new StaffMember();
         Name name = new Name();
         Contact contact = new Contact();

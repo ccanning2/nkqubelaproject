@@ -41,7 +41,7 @@
                             <b><fmt:formatDate value="${patient.demographic.dateOfBirth}" pattern="EEEE dd/MM/yyyy" /></b>
                         </td>
                         <td align="center">
-                            ${patient.ward.name}
+                            <a href="viewWard.html?pk=${patient.ward.id}">${patient.ward.name}</a>
                         </td>
                         <td align="center">
                             <a href="editPatient.html?pk=${patient.id}"><img id="editbutton" src="resources/images/edit.png" style="height: 20px; width: 20px;"/></a>

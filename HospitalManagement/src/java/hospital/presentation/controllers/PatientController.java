@@ -8,6 +8,7 @@ package hospital.presentation.controllers;
 import hospital.app.facade.Facade;
 import hospital.app.factory.AppFactory;
 import hospital.model.embeddables.Contact;
+import hospital.model.entities.MedicalAid;
 import hospital.model.entities.Patient;
 import hospital.model.entities.StaffMember;
 import hospital.model.entities.Ward;
@@ -62,6 +63,7 @@ public class PatientController {
     {
         PatientModel patientModel = new PatientModel();
         model.addAttribute("patientModel", patientModel);
+        model.addAttribute("hasMedicalAid", false);
         model.addAttribute("wardList", data.getWardCrudService().findAll());
         
         return "hospital/addPatient";
@@ -137,6 +139,10 @@ public class PatientController {
         model.addAttribute("patientModel", patientModel);
         model.addAttribute("wardList", data.getWardCrudService().findAll());
         
+        
+        System.out.println("patient.getMedicalAid(): " + patient.getMedicalAid());
+        model.addAttribute("hasMedicalAid", patient.getMedicalAid() != null ? true : false);
+        
         return "hospital/editPatient";
     }
     
@@ -202,6 +208,7 @@ public class PatientController {
         Map<String, String> stringValues = new HashMap<String, String>();
         Map<String, Long> longValues = new HashMap<String, Long>();
         Map<String, Date> dateValues = new HashMap<String, Date>();
+        MedicalAid medicalAid = new MedicalAid();
         
         stringValues.put("firstName", patientModel.getFirstName());
         stringValues.put("lastName", patientModel.getLastName());
@@ -217,7 +224,7 @@ public class PatientController {
 
         stringValues.put("medicalAidName", patientModel.getMedicalAidName());
         stringValues.put("medicalAidScheme", patientModel.getMedicalAidScheme());
-        stringValues.put("reasonForStay",patientModel.getReasonForStay());  
+        stringValues.put("reasonForStay",patientModel.getReasonForStay());
         
         longValues.put("medicalAidNumber", patientModel.getMedicalAidNumber());
         longValues.put("bedNumber", patientModel.getBedNumber());
@@ -231,6 +238,13 @@ public class PatientController {
         
         Patient patient = AppFactory.getPatient(stringValues, longValues, dateValues, patientModel.getHasMedicalAid(), ward);
 
+        medicalAid.setMedicalAidName(patientModel.getMedicalAidName());
+        medicalAid.setMedicalAidNumber(patientModel.getMedicalAidNumber());
+        medicalAid.setMedicalAidScheme(patientModel.getMedicalAidScheme());
+        
+        patient.setMedicalAid(medicalAid);
+        
+        data.getMedicalAidCrudService().persist(medicalAid);
         data.getPatientCrudService().persist(patient);
 
         return "hospital/result";

@@ -12,7 +12,7 @@
     });
     
     function showMedicalAidDetails(){
-        if(jQuery("#medicalAidDetails").show() == true){
+        if(document.getElementById('hasMedicalAid').checked === false){
             jQuery("#medicalAidDetails").hide();
         }else{
             jQuery("#medicalAidDetails").show();
@@ -78,19 +78,19 @@
         <label>Date of arrival:  </label> <br/>
         <f:input path="dateOfArrival" id="date" type="text"/> <br/>
         <label>Estimated Date of Discharge:  </label> <br/>
-        <f:input path="estimatedDateOfDischarge" id="date" type="text"/> <br/>
+        <f:input path="estimatedDateOfDeparture" id="date" type="text"/> <br/>
 
         <label>Current Condition: </label> <br/>
         <f:input path="currentCondition" type="text"/> <br/><br/>
         <label>Has Medical Aid: </label> <br/>
-        <f:checkbox path="hasMedicalAid" onclick="showMedicalAidDetails()"/><br/>
+        <f:checkbox path="hasMedicalAid" id="hasMedicalAid" name="hasMedicalAid" onclick="showMedicalAidDetails()"/><br/>
         <div id="medicalAidDetails">
             <label>Medical Aid Number: </label> <br/>
-            <f:input path="medicalAidNumber" type="text" /> <br/>
+            <f:input path="medicalAidNumber" id="medicalAidNumber" type="text" /> <br/>
             <label>Medical Aid Name: </label> <br/>
-            <f:input path="medicalAidName" type="text" /> <br/>
+            <f:input path="medicalAidName" id="medicalAidName" type="text" /> <br/>
             <label>Medical Aid Scheme: </label> <br/>
-            <f:input path="medicalAidScheme" type="text" /> <br/>
+            <f:input path="medicalAidScheme" id="medicalAidScheme" type="text" /> <br/>
         </div>
         <label>Patient number: </label> <br/>
         <f:input path="patientNumber" type="text" /> <br/>
