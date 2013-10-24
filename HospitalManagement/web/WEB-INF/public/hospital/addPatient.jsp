@@ -69,7 +69,7 @@
         </f:select><br/><br/>
 
         <label> Ward: </label><br/> 
-        <f:select id="wardNameDD" path="id">                            
+        <f:select id="wardNameDD" path="ward">                            
             <f:options items="${wardList}" itemValue="id" itemLabel="name" />
         </f:select> <br/>
         
@@ -91,7 +91,7 @@
             <label>Medical Aid Scheme: </label> <br/>
             <f:input path="medicalAidScheme" type="text" /> <br/>
         </div>
-        <label>Patient number: </label> <br/>
+        <label>Patient Number: </label> <br/>
         <f:input path="patientNumber" type="text" /> <br/>
         <label>Reason for stay: </label> <br/>
         <f:input path="reasonForStay" type="text" /> <br/>        

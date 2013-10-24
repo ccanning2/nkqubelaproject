@@ -10,6 +10,7 @@ import hospital.app.factory.AppFactory;
 import hospital.model.embeddables.Contact;
 import hospital.model.entities.Patient;
 import hospital.model.entities.StaffMember;
+import hospital.model.entities.Ward;
 import hospital.presentation.models.PatientModel;
 import java.text.ParseException;
 import java.util.Date;
@@ -168,6 +169,7 @@ public class PatientController {
         patient.getMedicalAid().setMedicalAidName(patientModel.getMedicalAidName());
         patient.getMedicalAid().setMedicalAidNumber(patientModel.getMedicalAidNumber());
         patient.getMedicalAid().setMedicalAidScheme(patientModel.getMedicalAidScheme());
+        patient.setWard(data.getWardCrudService().findById(patientModel.getWard()));
 
         data.getPatientCrudService().merge(patient);
 
@@ -223,9 +225,11 @@ public class PatientController {
         
         dateValues.put("dateOfArrival", patientModel.getDateOfArrival());
         dateValues.put("dateOfBirth", patientModel.getDateOfBirth());
-        dateValues.put("estimatedDateofDischarge", patientModel.getEstimatedDateOfDeparture());
+        dateValues.put("estimatedDateOfDischarge", patientModel.getEstimatedDateOfDeparture());
         
-        Patient patient = AppFactory.getPatient(stringValues,  longValues, dateValues, patientModel.getHasMedicalAid());
+        Ward ward = data.getWardCrudService().findById(patientModel.getWard());
+        
+        Patient patient = AppFactory.getPatient(stringValues, longValues, dateValues, patientModel.getHasMedicalAid(), ward);
 
         data.getPatientCrudService().persist(patient);
 

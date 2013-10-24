@@ -15,12 +15,12 @@
     <c:choose>
         <c:when test="${fn:length(patients) > 0}">
         <table id="displaytable">
-            <th>Patients Name</th>
-            <th>Patients Number</th>
+            <th>Full Name</th>
+            <th>Patient Number</th>
             <th>Email Address</th>            
             <th>Contact Number</th>   
             <th>Date Of Birth</th>   
-            <th>Ward #</th>  
+            <th>Ward</th>  
             <th></th>   
             <th></th>   
                 <c:forEach var="patient" items="${patients}"> 

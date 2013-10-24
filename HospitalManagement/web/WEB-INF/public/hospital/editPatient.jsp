@@ -69,7 +69,7 @@
         </f:select><br/><br/>
 
         <label> Ward: </label><br/> 
-        <f:select id="wardNameDD" path="id">                            
+        <f:select id="wardNameDD" path="ward">                            
             <f:options items="${wardList}" itemValue="id" itemLabel="name" />
         </f:select> <br/>
 

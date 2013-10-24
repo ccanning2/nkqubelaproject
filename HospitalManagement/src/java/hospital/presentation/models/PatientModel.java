@@ -32,6 +32,7 @@ public class PatientModel {
     private String identityNumber;
     private String currentCondition;
     private Boolean hasMedicalAid;
+    private long ward;
     
     @DateTimeFormat(pattern="yyyy-mm-dd")
     private Date dateOfArrival;
@@ -41,6 +42,14 @@ public class PatientModel {
     
     @DateTimeFormat(pattern="yyyy-mm-dd")
     private Date estimatedDateOfDeparture;
+
+    public long getWard() {
+        return ward;
+    }
+
+    public void setWard(long ward) {
+        this.ward = ward;
+    }
 
     public Date getEstimatedDateOfDeparture() {
         return estimatedDateOfDeparture;
