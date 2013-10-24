@@ -28,6 +28,15 @@ public class StaffMemberModel {
     private String type;
     private String startTime;
     private String endTime;
+    private String field;
+
+    public String getField() {
+        return field;
+    }
+
+    public void setField(String field) {
+        this.field = field;
+    }
 
     public String getStaffMember() {
         return staffMember;

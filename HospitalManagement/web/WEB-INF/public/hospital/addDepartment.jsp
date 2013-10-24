@@ -17,7 +17,11 @@
             <label> Department Size </label> <br/>
             <f:input path="size" type="number"/> <br/>
             <label> Department Floor Number: </label> <br/>
-            <f:input path="floorNumber" /> <br/>
+            <f:input path="floorNumber" type="number"/> <br/>
+            <label> Email Address: </label> <br/>
+            <f:input path="emailAddress" type="email"/> <br/>
+            <label> Contact Number: </label> <br/>
+            <f:input path="contactNumber" /> <br/>
             <label> Person in charge: </label> <br/>
             <f:select path="personInCharge">
                 <f:options items="${personInChargeList}" itemValue="id" itemLabel="fullName" />

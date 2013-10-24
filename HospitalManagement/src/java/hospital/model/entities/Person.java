@@ -8,11 +8,15 @@ import hospital.model.embeddables.Name;
 import hospital.model.embeddables.Demographic;
 import hospital.model.embeddables.Contact;
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -36,6 +40,17 @@ public class Person implements Serializable{
     private Demographic demographic;
     
     private String identityNumber;
+    
+    @ManyToOne
+    private Ward ward;
+
+    public Ward getWard() {
+        return ward;
+    }
+
+    public void setWard(Ward ward) {
+        this.ward = ward;
+    }
 
     public Name getName() {
         return name;

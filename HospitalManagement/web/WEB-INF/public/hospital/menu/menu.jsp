@@ -34,4 +34,5 @@
                 <li><a href="deleteStaffMember.html" class="delete">Delete</a></li>
             </ul>
 	</li>
+        <li><a href="api">REST</a></li>
 </ul>

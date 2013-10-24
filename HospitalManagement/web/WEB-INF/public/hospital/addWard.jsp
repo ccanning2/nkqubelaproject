@@ -27,7 +27,7 @@
         <label> Person In Charge: </label> <br/>
         <f:select path="personInCharge">
             <f:options items="${personInChargeList}" itemValue="id" itemLabel="fullName" />
-        </f:select><br/><br/> <!-- TODO: Need to add the rest of the fields -->
+        </f:select><br/><br/>
         <input type="submit" value="Create Ward"/>
         <input type="reset" value="Reset Fields"/>
     </f:form>

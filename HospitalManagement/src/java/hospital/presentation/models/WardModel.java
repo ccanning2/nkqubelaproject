@@ -14,14 +14,23 @@ import hospital.model.entities.Person;
 
 public class WardModel
 {
+    private long id;
     private String name;
     private Integer floorNumber;
-    private Person personInCharge;
+    private long personInCharge;
     private Integer wardNumber;
     private String emailAddress;
     private String contactNumber;
     private String visitingHoursStart;
     private String visitingHoursEnd;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getVisitingHoursStart() {
         return visitingHoursStart;
@@ -71,11 +80,11 @@ public class WardModel
         this.floorNumber = floorNumber;
     }
 
-    public Person getPersonInCharge() {
+    public long getPersonInCharge() {
         return personInCharge;
     }
 
-    public void setPersonInCharge(Person personInCharge) {
+    public void setPersonInCharge(long personInCharge) {
         this.personInCharge = personInCharge;
     }
 

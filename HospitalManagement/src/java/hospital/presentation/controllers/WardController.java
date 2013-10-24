@@ -7,6 +7,7 @@ package hospital.presentation.controllers;
 
 import hospital.app.facade.Facade;
 import hospital.app.factory.AppFactory;
+import hospital.model.embeddables.Contact;
 import hospital.model.entities.Ward;
 import hospital.presentation.models.WardModel;
 import java.util.HashMap;
@@ -23,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author Chris
+ * @author Gizelle
  */
 
 @Controller
@@ -32,11 +33,9 @@ public class WardController {
     private static long id;
   
     @RequestMapping(value = "/viewWards.html", method = RequestMethod.GET)
-    public String viewWard(Model model) 
-    {        
-        List<Ward> wards = data.getWardCrudService().findAll();
-        
-        model.addAttribute("wards", wards);
+    public String viewWards(Model model) 
+    {
+        model.addAttribute("wards", data.getWardCrudService().findAll());        
         
         return "hospital/viewWards";
     }
@@ -61,16 +60,28 @@ public class WardController {
         ward = data.getWardCrudService().findById(pk);
 
         if(pk != -6){
-            //departmentModel.setName(department.getName());
-            //departmentModel.setId(id);
+            wardModel.setName(ward.getName());
+            wardModel.setId(pk);
         }else{
-            //departmentModel.setName("");
+            wardModel.setName("");
         }
      
         model.addAttribute("wardList", wardList);
         model.addAttribute("wardModel", wardModel);
         
         return "hospital/deleteWard";
+    }
+    
+    @RequestMapping(value = "/deleteWardFromTable.html", method = RequestMethod.GET)
+    public String deleteWardFromTable(HttpServletRequest req, Model model) throws ServletRequestBindingException
+    {
+        long pk = ServletRequestUtils.getLongParameter(req,"pk", -6);  
+        Ward ward;
+        
+        ward = data.getWardCrudService().findById(pk);
+        data.getWardCrudService().remove(ward);
+        
+        return "hospital/result";
     }
     
     @RequestMapping(value = "/editWard.html", method = RequestMethod.GET)
@@ -82,14 +93,16 @@ public class WardController {
         
         ward = data.getWardCrudService().findById(id);
 
-        //departmentModel.setDescription(department.getDescription());
-        //departmentModel.setFloorNumber(department.getFloorNumber());
-        //departmentModel.setName(department.getName());
-        //departmentModel.setPersonInCharge(department.getPersonInCharge());
-        //departmentModel.setSize(department.getDepartmentSize());
-        //departmentModel.setContactNumber(department.getContact().getContactNumber());
-        //departmentModel.setEmailAddress(department.getContact().getEmailAddress());
+        wardModel.setName(ward.getName());
+        wardModel.setContactNumber(ward.getContact().getContactNumber());
+        wardModel.setEmailAddress(ward.getContact().getEmailAddress());
+        wardModel.setFloorNumber(ward.getFloorNumber());
+        wardModel.setPersonInCharge(ward.getPersonInCharge().getId());
+        wardModel.setVisitingHoursStart(ward.getVisitingHoursStart());
+        wardModel.setVisitingHoursEnd(ward.getVisitingHoursEnd());
+        wardModel.setWardNumber(ward.getWardNumber());
         model.addAttribute("wardModel", wardModel);
+        model.addAttribute("personInChargeList", data.getStaffMemberCrudService().findAll());
         
         return "hospital/editWard";
     }
@@ -103,21 +116,18 @@ public class WardController {
         }
         
         Ward ward = data.getWardCrudService().findById(id);
-        //Contact contact = new Contact();
+        Contact contact = new Contact();
 
-        //department.setDescription(departmentModel.getDescription());
-        //department.setFloorNumber(departmentModel.getFloorNumber());
-        //department.setName(departmentModel.getName());
-        //department.setPersonInCharge(departmentModel.getPersonInCharge());
-        //department.setDepartmentSize(departmentModel.getSize());
+        contact.setContactNumber(wardModel.getContactNumber());
+        contact.setEmailAddress(wardModel.getEmailAddress());
         
-        //System.out.println("departmentModel.getContactNumber(): " + departmentModel.getContactNumber());
-        //System.out.println("departmentModel.getEmailAddress(): " + departmentModel.getEmailAddress());
-        
-        //contact.setContactNumber(departmentModel.getContactNumber());
-        //contact.setEmailAddress(departmentModel.getEmailAddress());
-        
-        //department.setContact(contact);
+        ward.setContact(contact);
+        ward.setFloorNumber(wardModel.getFloorNumber());
+        ward.setName(wardModel.getName());
+        ward.setPersonInCharge(data.getStaffMemberCrudService().findById(wardModel.getPersonInCharge()));
+        ward.setVisitingHoursStart(wardModel.getVisitingHoursStart());
+        ward.setVisitingHoursEnd(wardModel.getVisitingHoursEnd());
+        ward.setWardNumber(wardModel.getWardNumber());
 
         data.getWardCrudService().merge(ward);
 
@@ -132,9 +142,9 @@ public class WardController {
             return "error";
         }
 
-        //Ward ward = data.getWardCrudService().findById(wardModel.getId());
+        Ward ward = data.getWardCrudService().findById(wardModel.getId());
 
-        //data.getWardCrudService().remove(ward);
+        data.getWardCrudService().remove(ward);
         
         return "hospital/result";
     }
@@ -150,14 +160,14 @@ public class WardController {
         Map<String, String> stringValues = new HashMap<String, String>();
 
         stringValues.put("name", wardModel.getName());
-        stringValues.put("visitinHoursStart", wardModel.getVisitingHoursStart());
-        stringValues.put("visitinHoursEnd", wardModel.getVisitingHoursEnd());
+        stringValues.put("visitingHoursStart", wardModel.getVisitingHoursStart());
+        stringValues.put("visitingHoursEnd", wardModel.getVisitingHoursEnd());
         stringValues.put("emailAddress", wardModel.getEmailAddress());
         stringValues.put("contactNumber", wardModel.getContactNumber());        
         
-        Ward ward = AppFactory.getWard(stringValues, wardModel.getFloorNumber(), wardModel.getWardNumber(), wardModel.getPersonInCharge());
+        Ward ward = AppFactory.getWard(stringValues, wardModel.getFloorNumber(), wardModel.getWardNumber(), data.getStaffMemberCrudService().findById(wardModel.getPersonInCharge()));
 
-        //data.getDepartmentCrudService().persist(department);
+        data.getWardCrudService().persist(ward);
 
         return "hospital/result";
     }

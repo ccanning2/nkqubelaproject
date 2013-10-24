@@ -11,19 +11,23 @@
     <h1>Edit Ward</h1><br>
      <f:form action="mergeWard.php" method="POST" modelAttribute="wardModel">  
         <label> Ward Name: </label> <br/>
-        <f:input path="name" type="text"/> <br/>
-        <label> Ward Description: </label> <br/>
-        <f:input path="description" type="text"/> <br/>
-        <label> Ward Size </label> <br/>
-        <f:input path="size" type="number"/> <br/>
-        <label> Ward Floor Number: </label> <br/>
-        <f:input path="floorNumber" /> <br/>
-        <label> Person in charge: </label> <br/>
-        <f:input path="personInCharge" /> <br/>
-        <label> Contact Number: </label> <br/>
-        <f:input path="contactNumber"/> <br/>
+        <f:input path="name" type="text"/> <br/>        
+        <label> Ward Number: </label> <br/>
+        <f:input path="wardNumber" type="text"/> <br/>
+        <label> Visiting Hours: (Start) </label> <br/>
+        <f:input path="visitingHoursStart" type="time"/> <br/>
+        <label> Visiting Hours: (End) </label> <br/>
+        <f:input path="visitingHoursEnd" type="time"/> <br/>
         <label> Email Address: </label> <br/>
-        <f:input path="emailAddress" type="email"/> <br/><br/>
+        <f:input path="emailAddress" type="email"/> <br/>
+        <label> Contact Number: </label> <br/>
+        <f:input path="contactNumber" type="text"/> <br/>
+        <label> Floor Number: </label> <br/>
+        <f:input path="floorNumber" /> <br/>
+        <label> Person In Charge: </label> <br/>
+        <f:select path="personInCharge">
+            <f:options items="${personInChargeList}" itemValue="id" itemLabel="fullName" />
+        </f:select><br/><br/>
         <input type="submit" value="Update Ward"/>
         <input type="reset" value="Reset Fields"/>
     </f:form>

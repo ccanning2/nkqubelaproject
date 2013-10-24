@@ -27,7 +27,7 @@
                             <a href="editWard.html?pk=${ward.id}"><img id="editbutton" src="resources/images/edit.png" style="height: 20px; width: 20px;"/></a>
                         </td> 
                         <td align="center">
-                            <a href="deleteWard.html?pk=${ward.id}"><img id="deletebutton" src="resources/images/delete.png" style="height: 20px; width: 20px;"</a>
+                            <a href="deleteWardFromTable.html?pk=${ward.id}"><img id="deletebutton" src="resources/images/delete.png" style="height: 20px; width: 20px;"</a>
                         </td> 
                     </tr>
                 </c:forEach>

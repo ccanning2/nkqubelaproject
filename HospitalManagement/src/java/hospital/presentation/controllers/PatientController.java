@@ -91,6 +91,18 @@ public class PatientController {
         return "hospital/deletePatient";
     }
     
+    @RequestMapping(value = "/deletePatientFromTable.html", method = RequestMethod.GET)
+    public String deletePatientFromTable(HttpServletRequest req, Model model) throws ServletRequestBindingException
+    {
+        long pk = ServletRequestUtils.getLongParameter(req,"pk", -6);  
+        Patient patient;
+        
+        patient = data.getPatientCrudService().findById(pk);
+        data.getPatientCrudService().remove(patient);
+        
+        return "hospital/result";
+    }
+    
     @RequestMapping(value = "/editPatient.html", method = RequestMethod.GET)
     public String editPatient(HttpServletRequest req, Model model) throws ServletRequestBindingException, ParseException
     {

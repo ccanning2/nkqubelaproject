@@ -41,7 +41,7 @@ public class AppFactory
         department.setName(stringValues.get("name"));
         
         contact.setContactNumber(stringValues.get("contactNumber"));
-        contact.setContactNumber(stringValues.get("email"));
+        contact.setEmailAddress(stringValues.get("email"));
         
         department.setContact(contact);
         
