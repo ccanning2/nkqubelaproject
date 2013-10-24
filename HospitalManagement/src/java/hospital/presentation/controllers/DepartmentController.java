@@ -33,13 +33,24 @@ public class DepartmentController {
     private static long id;
   
     @RequestMapping(value = "/viewDepartments.html", method = RequestMethod.GET)
-    public String viewMessages(Model model) 
+    public String viewDepartments(Model model) 
     {        
         List<Department> departments = data.getDepartmentCrudService().findAll();
         
         model.addAttribute("departments", departments);
         
         return "hospital/viewDepartments";
+    }
+    
+    @RequestMapping(value = "/viewDepartment.html", method = RequestMethod.GET)
+    public String viewDepartment(HttpServletRequest req,Model model) throws ServletRequestBindingException
+    {    
+        long pk = ServletRequestUtils.getLongParameter(req,"pk", -6);
+        Department department = data.getDepartmentCrudService().findById(pk);
+        
+        model.addAttribute("department", department);
+        
+        return "hospital/viewDepartment";
     }
     
     @RequestMapping(value = "/addDepartment.html", method = RequestMethod.GET)

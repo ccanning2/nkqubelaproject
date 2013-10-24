@@ -10,7 +10,7 @@
 
 <body>
 <div id="content">
-    <h1>View A Person</h1><br>
+    <h1>VIEW A PERSON</h1><br>
     <p>Full Name: ${person.fullName}</p>        
     <p>Nick Name: ${person.name.nickName}</p>
     <p>Identity Number: ${person.identityNumber}</p> <!-- TODO: If ID is entered calculate dob otherwise check if the ID and date match-->

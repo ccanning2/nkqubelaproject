@@ -13,7 +13,7 @@
         <label> Ward Name: </label> <br/>
         <f:input path="name" type="text"/> <br/>        
         <label> Ward Number: </label> <br/>
-        <f:input path="wardNumber" type="text"/> <br/>
+        <f:input path="wardNumber" type="number"/> <br/>
         <label> Visiting Hours: (Start) </label> <br/>
         <f:input path="visitingHoursStart" type="time"/> <br/>
         <label> Visiting Hours: (End) </label> <br/>
@@ -23,10 +23,14 @@
         <label> Contact Number: </label> <br/>
         <f:input path="contactNumber" type="text"/> <br/>
         <label> Floor Number: </label> <br/>
-        <f:input path="floorNumber" /> <br/>
+        <f:input path="floorNumber" type="number"/> <br/>
         <label> Person In Charge: </label> <br/>
         <f:select path="personInCharge">
             <f:options items="${personInChargeList}" itemValue="id" itemLabel="fullName" />
+        </f:select><br/><br/>
+        <label> Belong to Department:  </label> <br/>
+        <f:select path="department">
+            <f:options items="${departmentList}" itemValue="id" itemLabel="name" />
         </f:select><br/><br/>
         <input type="submit" value="Create Ward"/>
         <input type="reset" value="Reset Fields"/>

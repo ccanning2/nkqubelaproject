@@ -13,7 +13,7 @@
             <label> Department Name: </label> <br/>
             <f:input path="name" type="text"/> <br/>
             <label> Department Description: </label> <br/>
-            <f:input path="description" type="text"/> <br/>
+            <f:textarea path="description"/><br/>
             <label> Department Size </label> <br/>
             <f:input path="size" type="number"/> <br/>
             <label> Department Floor Number: </label> <br/>

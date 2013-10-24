@@ -9,8 +9,10 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -23,9 +25,11 @@ public class Patient extends Person implements Serializable {
     private Long patientNumber;
     private String currentCondition;
     
+    @DateTimeFormat(pattern="yyyy-mm-dd")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateOfArrival;    
     
+    @DateTimeFormat(pattern="yyyy-mm-dd")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date estimatedDateOfDischarge;
     
@@ -33,13 +37,24 @@ public class Patient extends Person implements Serializable {
     private long bedNumber;
     
     @OneToOne
-    private MedicalAid medicalAid;
+    private Ward ward;
+    
+    @OneToOne
+    private MedicalAid medicalAid;    
 
-    public long getPatientNumber() {
+    public Ward getWard() {
+        return ward;
+    }
+
+    public void setWard(Ward ward) {
+        this.ward = ward;
+    }
+
+    public Long getPatientNumber() {
         return patientNumber;
     }
 
-    public void setPatientNumber(long patientNumber) {
+    public void setPatientNumber(Long patientNumber) {
         this.patientNumber = patientNumber;
     }
 
@@ -59,12 +74,12 @@ public class Patient extends Person implements Serializable {
         this.dateOfArrival = dateOfArrival;
     }
 
-    public Date getEstimatedDateOfArrival() {
+    public Date getEstimatedDateOfDischarge() {
         return estimatedDateOfDischarge;
     }
 
-    public void setEstimatedDateOfArrival(Date estimatedDateOfArrival) {
-        this.estimatedDateOfDischarge = estimatedDateOfArrival;
+    public void setEstimatedDateOfDischarge(Date estimatedDateOfDischarge) {
+        this.estimatedDateOfDischarge = estimatedDateOfDischarge;
     }
 
     public String getReasonForStay() {
@@ -89,13 +104,5 @@ public class Patient extends Person implements Serializable {
 
     public void setMedicalAid(MedicalAid medicalAid) {
         this.medicalAid = medicalAid;
-    }
-
-    public Date getEstimatedDateOfDischarge() {
-        return estimatedDateOfDischarge;
-    }
-
-    public void setEstimatedDateOfDischarge(Date estimatedDateOfDischarge) {
-        this.estimatedDateOfDischarge = estimatedDateOfDischarge;
-    }    
+    }  
 }

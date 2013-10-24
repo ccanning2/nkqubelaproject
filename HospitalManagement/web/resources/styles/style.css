@@ -47,28 +47,29 @@ h1{
 
 #tableSpacer{
     width: 65%;
+    height: 250px;
 }
 
 #displaytable
 {
     font-family: Georgia, serif;
-    width:100%;
+    width:75%;
     border-collapse:collapse;
 }
 #displaytable td, #displaytable th 
 {
     font-size:1em;
-    border:1px solid #4998F2;
+    border:1px solid #63b038;
     padding:3px 7px 2px 7px;
 }
 #displaytable th 
 {
-    font-size:1.1em;
+    font-size:1em;
     text-align:center;
     text-transform: uppercase;
     padding-top:5px;
     padding-bottom:4px;
-    background-color:#1B77E0;
+    background-color:#63b038;
     color:#ffffff;
 }
 #displaytable tr.alt td 
@@ -220,6 +221,18 @@ body {
 input[type="text"], select, input[type="number"], input[type="email"], input[type="time"], input[type="password"]
 {
     font-size: 12pt;
+    border: 5px solid white; 
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 8px  rgba(0,0,0,0.1), 0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: inset 0 0 8px  rgba(0,0,0,0.1), 0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: inset 0 0 8px  rgba(0,0,0,0.1), 0 0 16px rgba(0,0,0,0.1); 
+    padding: 5px;
+    background-color: #F0F0F0;
+    margin: 0 0 10px 0;
+}
+
+textarea{
+    font-size: 10pt;
     border: 5px solid white; 
     border-radius: 3px;
     -webkit-box-shadow: inset 0 0 8px  rgba(0,0,0,0.1), 0 0 16px rgba(0,0,0,0.1); 

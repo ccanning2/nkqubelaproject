@@ -38,9 +38,8 @@
         <f:input path="contactNumber" type="text"/> <br/>
         <label> Identity Number: </label> <br/>
         <f:input path="identityNumber" type="text"/> <br/>
-        <%--
-            <label>Date Of Birth:  </label> <br/>
-            <f:input path="dateOfBirth" id="date" type="text"/> --%> <br/><br/>
+        <label>Date Of Birth:  </label> <br/>
+        <f:input path="dateOfBirth" id="date" type="text"/><br/><br/>
 
         <label>Gender: </label> <br/>
         <f:select id="genderDD" path="race">                            
@@ -69,18 +68,18 @@
             <f:option value="Prof"/>            
         </f:select><br/><br/>
 
-        <%--
-            <label> Ward: </label><br/> 
-            <f:select id="wardNameDD" path="id">                            
-                <f:options items="${wardList}" itemValue="id" itemLabel="name" />
-            </f:select> <br/>
-        %-->
+        <label> Ward: </label><br/> 
+        <f:select id="wardNameDD" path="id">                            
+            <f:options items="${wardList}" itemValue="id" itemLabel="name" />
+        </f:select> <br/>
 
         <label> Patient Bed Number: </label> <br/>
         <f:input path="bedNumber" type="text"/> <br/>
-        <%-- <label>Date of arrival:  </label> <br/>
-             <f:input path="dateOfArrival" id="date" type="text"/> <br/>
-        --%>
+        <label>Date of arrival:  </label> <br/>
+        <f:input path="dateOfArrival" id="date" type="text"/> <br/>
+        <label>Estimated Date of Discharge:  </label> <br/>
+        <f:input path="estimatedDateOfDischarge" id="date" type="text"/> <br/>
+
         <label>Current Condition: </label> <br/>
         <f:input path="currentCondition" type="text"/> <br/><br/>
         <label>Has Medical Aid: </label> <br/>

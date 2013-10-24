@@ -22,7 +22,7 @@
 
 <body>
 <div id="content">
-        <h1>Delete A Patient</h1><br>        
+        <h1>DELETE A PATIENT</h1><br>        
         <f:form action="removePatient.php" method="GET" modelAttribute="patientModel">               
             <c:choose>
                 <c:when test="${fn:length(patientList) > 0}">

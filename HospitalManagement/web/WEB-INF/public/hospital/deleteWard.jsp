@@ -22,7 +22,7 @@
 
 <body>
 <div id="content">
-        <h1>Delete A Ward</h1><br>        
+        <h1>DELETE A WARD</h1><br>        
         <f:form action="removeWard.php" method="GET" modelAttribute="wardModel">               
             <c:choose>
                 <c:when test="${fn:length(wardList) > 0}">

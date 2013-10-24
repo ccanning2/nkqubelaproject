@@ -16,13 +16,22 @@ public class WardModel
 {
     private long id;
     private String name;
+    private long department;
     private Integer floorNumber;
     private long personInCharge;
-    private Integer wardNumber;
+    private long wardNumber;
     private String emailAddress;
     private String contactNumber;
     private String visitingHoursStart;
     private String visitingHoursEnd;
+
+    public long getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(long department) {
+        this.department = department;
+    }
 
     public long getId() {
         return id;
@@ -88,11 +97,11 @@ public class WardModel
         this.personInCharge = personInCharge;
     }
 
-    public Integer getWardNumber() {
+    public long getWardNumber() {
         return wardNumber;
     }
 
-    public void setWardNumber(Integer wardNumber) {
+    public void setWardNumber(long wardNumber) {
         this.wardNumber = wardNumber;
     }
 }

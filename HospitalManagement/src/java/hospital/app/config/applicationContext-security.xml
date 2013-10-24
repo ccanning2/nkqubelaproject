@@ -8,11 +8,15 @@
     
     <http use-expressions="true">
         <intercept-url pattern="/" access="hasAnyRole('General', 'Supervisor', 'User', 'Manager')"/>
-        <!-- <intercept-url pattern="/addPerson.html" access="hasRole('Supervisor')"/>
-        <intercept-url pattern="/addHotel.html" access="hasRole('Supervisor')"/>
-        <intercept-url pattern="/deletePerson.html" access="hasRole('Manager')"/>
-        <intercept-url pattern="/deleteHotel.html" access="hasAnyRole('Supervisor', 'Manager')"/>
-        <intercept-url pattern="/viewUser.html" access="hasAnyRole('General', 'Supervisor', 'User', 'Manager')"/> -->
+        <intercept-url pattern="/addDepartment.html" access="hasAnyRole('Supervisor', 'Manager')"/>
+        <intercept-url pattern="/addWard.html" access="hasAnyRole('Supervisor', 'Manager')"/>
+        <intercept-url pattern="/addStaffMember.html" access="hasAnyRole('Supervisor', 'Manager')"/>      
+        <intercept-url pattern="/deleteDepartment.html" access="hasAnyRole('Supervisor', 'Manager')"/>
+        <intercept-url pattern="/deleteWard.html" access="hasAnyRole('Supervisor', 'Manager')"/>
+        <intercept-url pattern="/deleteStaffMember.html" access="hasAnyRole('Supervisor', 'Manager')"/>
+        <intercept-url pattern="/deleteFromTableDepartment.html" access="hasAnyRole('Supervisor', 'Manager')"/>
+        <intercept-url pattern="/deleteFromTableWard.html" access="hasAnyRole('Supervisor', 'Manager')"/>
+        <intercept-url pattern="/deleteFromTableStaffMember.html" access="hasAnyRole('Supervisor', 'Manager')"/>
        <form-login login-page="/login" default-target-url="/" authentication-failure-url="/loginfailed" />
        <logout logout-success-url="/"/>
        <access-denied-handler error-page="/accessDenied.html"/>

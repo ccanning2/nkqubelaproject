@@ -6,6 +6,7 @@ package hospital.presentation.models;
 
 import java.text.ParseException;
 import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -17,9 +18,7 @@ public class PatientModel {
     private String lastName;
     private String middleName;
     private String nickName;
-    private long bedNumber;
-    private Date dateOfArrival;
-    private Date dateOfBirth;
+    private long bedNumber;   
     private long medicalAidNumber;
     private String medicalAidName;
     private String medicalAidScheme;
@@ -33,6 +32,23 @@ public class PatientModel {
     private String identityNumber;
     private String currentCondition;
     private Boolean hasMedicalAid;
+    
+    @DateTimeFormat(pattern="yyyy-mm-dd")
+    private Date dateOfArrival;
+    
+    @DateTimeFormat(pattern="yyyy-mm-dd")
+    private Date dateOfBirth;
+    
+    @DateTimeFormat(pattern="yyyy-mm-dd")
+    private Date estimatedDateOfDeparture;
+
+    public Date getEstimatedDateOfDeparture() {
+        return estimatedDateOfDeparture;
+    }
+
+    public void setEstimatedDateOfDeparture(Date estimatedDateOfDeparture) {
+        this.estimatedDateOfDeparture = estimatedDateOfDeparture;
+    }
 
     public Boolean getHasMedicalAid() {
         return hasMedicalAid;

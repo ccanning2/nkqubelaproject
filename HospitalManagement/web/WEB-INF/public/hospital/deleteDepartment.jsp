@@ -22,7 +22,7 @@
 
 <body>
 <div id="content">
-        <h1>Delete A Department</h1><br>        
+        <h1>DELETE A DEPARTMENT</h1><br>        
         <f:form action="removeDepartment.php" method="GET" modelAttribute="departmentModel">               
             <c:choose>
                 <c:when test="${fn:length(departmentList) > 0}">

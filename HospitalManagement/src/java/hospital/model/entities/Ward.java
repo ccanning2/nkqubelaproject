@@ -34,7 +34,7 @@ public class Ward implements Serializable {
     private List<Patient> patients;
     
     private String name;
-    private Integer wardNumber;
+    private long wardNumber;
     private Integer floorNumber;
     private String visitingHoursStart;
     private String visitingHoursEnd;
@@ -43,7 +43,18 @@ public class Ward implements Serializable {
     private Contact contact;
     
     @OneToOne
+    private Department department;
+    
+    @OneToOne
     private Person personInCharge;    
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
     
     public String getVisitingHoursStart() {
         return visitingHoursStart;
@@ -77,11 +88,11 @@ public class Ward implements Serializable {
         this.contact = contact;
     }
 
-    public Integer getWardNumber() {
+    public long getWardNumber() {
         return wardNumber;
     }
 
-    public void setWardNumber(Integer wardNumber) {
+    public void setWardNumber(long wardNumber) {
         this.wardNumber = wardNumber;
     }
 

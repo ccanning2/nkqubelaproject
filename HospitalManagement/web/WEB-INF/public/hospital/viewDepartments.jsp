@@ -9,7 +9,7 @@
 
 <body>
 <div id="content">
-    <h1>View All Departments</h1><br>
+    <h1>VIEW ALL DEPARTMENTS</h1><br>
     
     <c:choose>
         <c:when test="${fn:length(departments) > 0}">

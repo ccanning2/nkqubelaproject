@@ -17,7 +17,9 @@
         <label>Middle Name: </label> <br/>
         <f:input path="middleName" type="text"/> <br/>
         <label>Nick Name: </label> <br/>
-        <f:input path="nickName" type="text"/> <br/>      
+        <f:input path="nickName" type="text"/> <br/>
+        <label>Staff Number: </label> <br/>
+        <f:input path="staffNumber" type="text"/> <br/>
         <label>Email Address: </label> <br/>
         <f:input path="emailAddress" type="text"/> <br/>
         <label>Contact Number: </label> <br/>
@@ -30,10 +32,10 @@
         <f:input path="startTime" type="time"/> <br/>
         <label> End Time: </label> <br/>
         <f:input path="endTime" type="time"/> <br/>
-        <%--
-            <label>Date Of Birth:  </label> <br/>
-            <f:input path="dateOfBirth" id="date" type="text"/> --%> <br/><br/>
-
+        <label>Field:  </label> <br/>
+        <f:input path="field" id="date" type="text"/> <br/><br/>
+        <label>Date Of Birth:  </label> <br/>
+        <f:input path="dateOfBirth" id="date" type="text"/> <br/><br/>
         <label>Gender: </label> <br/>
         <f:select id="genderDD" path="race">                            
             <f:option value="Select A Race"/>
@@ -60,20 +62,7 @@
             <f:option value="Rev"/>
             <f:option value="Prof"/>            
         </f:select><br/><br/>
-
-        <%--
-            <label> Ward: </label><br/> 
-            <f:select id="wardNameDD" path="id">                            
-                <f:options items="${wardList}" itemValue="id" itemLabel="name" />
-            </f:select> <br/>
-        %-->
-
-        <label> Patient Bed Number: </label> <br/>
-        <f:input path="bedNumber" type="text"/> <br/>
-        <%-- <label>Date of arrival:  </label> <br/>
-             <f:input path="dateOfArrival" id="date" type="text"/> <br/>
-        --%>
-           
+        
         <input type="submit" value="Save Changes"/>
         <input type="reset" value="Reset Fields"/>
     </f:form>

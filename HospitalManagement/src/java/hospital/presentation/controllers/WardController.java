@@ -45,7 +45,8 @@ public class WardController {
     {
         model.addAttribute("wardModel", new WardModel());
         model.addAttribute("personInChargeList", data.getStaffMemberCrudService().findAll());
-
+        model.addAttribute("departmentList", data.getDepartmentCrudService().findAll());
+        
         return "hospital/addWard";
     }
     
@@ -101,8 +102,10 @@ public class WardController {
         wardModel.setVisitingHoursStart(ward.getVisitingHoursStart());
         wardModel.setVisitingHoursEnd(ward.getVisitingHoursEnd());
         wardModel.setWardNumber(ward.getWardNumber());
+        wardModel.setDepartment(ward.getDepartment().getId());
         model.addAttribute("wardModel", wardModel);
         model.addAttribute("personInChargeList", data.getStaffMemberCrudService().findAll());
+        model.addAttribute("departmentList", data.getDepartmentCrudService().findAll());
         
         return "hospital/editWard";
     }
@@ -128,6 +131,7 @@ public class WardController {
         ward.setVisitingHoursStart(wardModel.getVisitingHoursStart());
         ward.setVisitingHoursEnd(wardModel.getVisitingHoursEnd());
         ward.setWardNumber(wardModel.getWardNumber());
+        ward.setDepartment(data.getDepartmentCrudService().findById(wardModel.getDepartment()));
 
         data.getWardCrudService().merge(ward);
 
@@ -154,6 +158,7 @@ public class WardController {
     {
         if (result.hasErrors()) 
         {
+            System.out.println("ERRORS: " + result.getAllErrors());
             return "error";
         }
         
@@ -163,9 +168,9 @@ public class WardController {
         stringValues.put("visitingHoursStart", wardModel.getVisitingHoursStart());
         stringValues.put("visitingHoursEnd", wardModel.getVisitingHoursEnd());
         stringValues.put("emailAddress", wardModel.getEmailAddress());
-        stringValues.put("contactNumber", wardModel.getContactNumber());        
+        stringValues.put("contactNumber", wardModel.getContactNumber());   
         
-        Ward ward = AppFactory.getWard(stringValues, wardModel.getFloorNumber(), wardModel.getWardNumber(), data.getStaffMemberCrudService().findById(wardModel.getPersonInCharge()));
+        Ward ward = AppFactory.getWard(stringValues, wardModel.getFloorNumber(), wardModel.getWardNumber(), data.getStaffMemberCrudService().findById(wardModel.getPersonInCharge()), data.getDepartmentCrudService().findById(wardModel.getDepartment()));
 
         data.getWardCrudService().persist(ward);
 

@@ -9,19 +9,35 @@
 
 <body>
 <div id="content">
-    <h1>VIEW ALL STAFF MEMBERS:</h1><br>
+    <h1>VIEW ALL STAFF MEMBERS</h1><br>
     
     <c:choose>
         <c:when test="${fn:length(staffMembers) > 0}">
         <table id="displaytable">
-            <th>Staff Member Name</th>
+            <th>Name</th>
+            <th>Staff Number</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Field</th>
             
             <th></th>   
             <th></th>   
                 <c:forEach var="staffMember" items="${staffMembers}"> 
                     <tr> 
                         <td align="center">
+                            ${staffMember.fullName}
+                        </td>
+                        <td align="center">
                             ${staffMember.staffNumber}
+                        </td>
+                        <td align="center">
+                            ${staffMember.startTime}
+                        </td>
+                        <td align="center">
+                            ${staffMember.endTime}
+                        </td>
+                        <td align="center">
+                            ${staffMember.field}
                         </td>
                         <td align="center">
                             <a href="editStaffMember.html?pk=${staffMember.id}"><img id="editbutton" src="resources/images/edit.png" style="height: 20px; width: 20px;"/></a>

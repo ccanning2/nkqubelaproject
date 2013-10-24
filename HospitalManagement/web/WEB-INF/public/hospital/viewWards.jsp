@@ -9,12 +9,15 @@
 
 <body>
 <div id="content">
-    <h1>View All Wards</h1><br>
+    <h1>VIEW ALL WARDS</h1><br>
     
     <c:choose>
         <c:when test="${fn:length(wards) > 0}">
         <table id="displaytable">
-            <th>Ward Name</th>
+            <th>Name</th>
+            <th>Ward Number</th>
+            <th>Person In Charge</th>
+            <th>Belongs to Department</th>
             
             <th></th>   
             <th></th>   
@@ -22,6 +25,15 @@
                     <tr> 
                         <td align="center">
                             ${ward.name}
+                        </td>
+                        <td align="center">
+                            ${ward.wardNumber}
+                        </td>
+                        <td align="center">
+                            <a href="viewStaffMember.html?pk=${ward.personInCharge.id}">${ward.personInCharge.name.firstName}&#160;${ward.personInCharge.name.lastName}</a>
+                        </td>
+                        <td align="center">
+                            <a href="viewDepartment.html?pk=${ward.department.id}">${ward.department.name}</a>
                         </td>
                         <td align="center">
                             <a href="editWard.html?pk=${ward.id}"><img id="editbutton" src="resources/images/edit.png" style="height: 20px; width: 20px;"/></a>

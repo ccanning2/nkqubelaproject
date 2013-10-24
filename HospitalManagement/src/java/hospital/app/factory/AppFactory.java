@@ -69,12 +69,13 @@ public class AppFactory
         return role;
     }
     
-    public static Patient getPatient(Map<String, String> stringValues, final long bedNumber, final long patientNumber, final Date dateOfArrival, final Date dateOfBirth, final Boolean hasMedicalAid) 
+    public static Patient getPatient(Map<String, String> stringValues, Map<String, Long> longValues, Map<String, Date> dateValues, final Boolean hasMedicalAid) 
     {
         Name name = new Name();
         Contact contact = new Contact();
         Patient patient = new Patient();
         Demographic demographic = new Demographic();
+        MedicalAid medicalAid = new MedicalAid();
        
         name.setFirstName(stringValues.get("firstName"));
         name.setLastName(stringValues.get("lastName"));
@@ -84,23 +85,27 @@ public class AppFactory
         contact.setContactNumber(stringValues.get("contactNumber"));
         contact.setEmailAddress(stringValues.get("emailAddress"));
         
-        demographic.setDateOfBirth(dateOfBirth);
+        demographic.setDateOfBirth(dateValues.get("dateOfBirth"));
         demographic.setGender(stringValues.get("gender"));
         demographic.setRace(stringValues.get("race"));
         demographic.setTitle(stringValues.get("title"));
         
         if(hasMedicalAid == true){
-                        
-        }
+            medicalAid.setMedicalAidName(stringValues.get("medicalAidName"));
+            medicalAid.setMedicalAidScheme(stringValues.get("medicalAidScheme"));
+            medicalAid.setMedicalAidNumber(longValues.get("medicalAidNumber"));
+         }
         
         patient.setName(name);
         patient.setContact(contact);
         patient.setDemographic(demographic);
-        patient.setBedNumber(bedNumber);
-        patient.setPatientNumber(patientNumber);
+        patient.setPatientNumber(longValues.get("patientNumber"));
+        patient.setBedNumber(longValues.get("bedNumber"));
+        patient.setPatientNumber(longValues.get("patientNumbe"));
         patient.setReasonForStay(stringValues.get("reasonForStay"));
         patient.setIdentityNumber(stringValues.get("identityNumber"));
-        patient.setEstimatedDateOfArrival(dateOfArrival);
+        patient.setEstimatedDateOfDischarge(dateValues.get("estimatedDateOfDischarge"));
+        patient.setDateOfArrival(dateValues.get("dateOfArrival"));
         patient.setCurrentCondition(stringValues.get("currentCondition"));
       
         return patient;
@@ -134,7 +139,7 @@ public class AppFactory
         return staffMember;
     }
      
-    public static Ward getWard(Map<String, String> stringValues, Integer floorNumber, Integer wardNumber, Person personInCharge) 
+    public static Ward getWard(Map<String, String> stringValues, Integer floorNumber, long wardNumber, Person personInCharge, Department department) 
     {
         Ward ward = new Ward();
         Contact contact = new Contact();
@@ -149,6 +154,7 @@ public class AppFactory
         ward.setPersonInCharge(personInCharge);
         ward.setVisitingHoursStart(stringValues.get("visitingHoursStart"));
         ward.setVisitingHoursEnd(stringValues.get("visitingHoursEnd"));
+        ward.setDepartment(department);
         
         return ward;
     }

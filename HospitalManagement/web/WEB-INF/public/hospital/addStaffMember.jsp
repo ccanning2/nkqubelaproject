@@ -30,9 +30,8 @@
         <f:input path="startTime" type="time"/> <br/>
         <label> End Time: </label> <br/>
         <f:input path="endTime" type="time"/> <br/>
-        <%--
-            <label>Date Of Birth:  </label> <br/>
-            <f:input path="dateOfBirth" id="date" type="text"/> --%> <br/><br/>
+        <label>Date Of Birth:  </label> <br/>
+        <f:input path="dateOfBirth" id="date" type="text"/> <br/><br/>
 
         <label>Gender: </label> <br/>
         <f:select id="genderDD" path="race">                            
@@ -61,18 +60,10 @@
             <f:option value="Prof"/>            
         </f:select><br/><br/>
 
-        <%--
-            <label> Ward: </label><br/> 
-            <f:select id="wardNameDD" path="id">                            
-                <f:options items="${wardList}" itemValue="id" itemLabel="name" />
-            </f:select> <br/>
-        %-->
-
         <label> Patient Bed Number: </label> <br/>
         <f:input path="bedNumber" type="text"/> <br/>
-        <%-- <label>Date of arrival:  </label> <br/>
-             <f:input path="dateOfArrival" id="date" type="text"/> <br/>
-        --%>
+        <label>Date of arrival:  </label> <br/>
+        <f:input path="dateOfArrival" id="date" type="text"/> <br/>
            
         <input type="submit" value="Create Staff Member"/>
         <input type="reset" value="Reset Fields"/>

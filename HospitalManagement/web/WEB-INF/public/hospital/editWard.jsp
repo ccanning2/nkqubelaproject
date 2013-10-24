@@ -8,7 +8,7 @@
 
 <body>
 <div id="content">
-    <h1>Edit Ward</h1><br>
+    <h1>EDIT A WARD</h1><br>
      <f:form action="mergeWard.php" method="POST" modelAttribute="wardModel">  
         <label> Ward Name: </label> <br/>
         <f:input path="name" type="text"/> <br/>        
@@ -23,10 +23,14 @@
         <label> Contact Number: </label> <br/>
         <f:input path="contactNumber" type="text"/> <br/>
         <label> Floor Number: </label> <br/>
-        <f:input path="floorNumber" /> <br/>
+        <f:input path="floorNumber" type="number"/> <br/>
         <label> Person In Charge: </label> <br/>
         <f:select path="personInCharge">
             <f:options items="${personInChargeList}" itemValue="id" itemLabel="fullName" />
+        </f:select><br/><br/>
+        <label> Belong to Department:  </label> <br/>
+        <f:select path="department">
+            <f:options items="${departmentList}" itemValue="id" itemLabel="name" />
         </f:select><br/><br/>
         <input type="submit" value="Update Ward"/>
         <input type="reset" value="Reset Fields"/>

@@ -4,9 +4,11 @@
  */
 
 import hospital.app.factory.AppFactory;
+import hospital.model.entities.Department;
 import hospital.model.entities.Person;
 import hospital.model.entities.StaffMember;
 import hospital.model.entities.Ward;
+import hospital.services.crud.DepartmentCrudService;
 import hospital.services.crud.StaffMemberCrudService;
 import hospital.services.crud.WardCrudService;
 import java.util.HashMap;
@@ -30,6 +32,7 @@ public class WardCrudTest {
     
     private static WardCrudService wardCrudService;
     private static StaffMemberCrudService staffMemberCrudService;
+    private static DepartmentCrudService departmentCrudService;
     private static long id;    
     private static ApplicationContext ctx;
     
@@ -41,18 +44,20 @@ public class WardCrudTest {
         System.out.println("---TESTWARDCREATE---");
         Ward ward;
         StaffMember staffMember = new StaffMember();
+        Department department = new Department();
         
         staffMemberCrudService.persist(staffMember);
-        
+        departmentCrudService.persist(department);
         
         Map<String, String> stringValues = new HashMap<String, String>();
         
-        stringValues.put("name", "WardOne");
-        stringValues.put("person incharge", "Mary");
-        stringValues.put("email", "icu@hospital.co.za");
-        stringValues.put("contactNumber", "0878006584");        
+        stringValues.put("name", "ICU");
+        stringValues.put("visitingHoursStart", "18:00");
+        stringValues.put("visitingHoursEnd", "19:00");
+        stringValues.put("emailAddress", "icu@hospital.co.za");
+        stringValues.put("contactNumber", "0215576254");             
         
-        ward = AppFactory.getWard(stringValues, 1, 100, staffMember);
+        ward = AppFactory.getWard(stringValues, 1, 100, staffMember, department);
         
         wardCrudService.persist(ward);
         

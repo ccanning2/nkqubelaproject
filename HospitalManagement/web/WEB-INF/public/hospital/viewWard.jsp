@@ -9,7 +9,7 @@
 
 <body>
 <div id="content">
-    <h1>View All Wards</h1><br>
+    <h1>VIEW A WARD</h1><br>
     
     <c:choose>
         <c:when test="${fn:length(wards) > 0}">

@@ -40,17 +40,6 @@ public class Person implements Serializable{
     private Demographic demographic;
     
     private String identityNumber;
-    
-    @ManyToOne
-    private Ward ward;
-
-    public Ward getWard() {
-        return ward;
-    }
-
-    public void setWard(Ward ward) {
-        this.ward = ward;
-    }
 
     public Name getName() {
         return name;

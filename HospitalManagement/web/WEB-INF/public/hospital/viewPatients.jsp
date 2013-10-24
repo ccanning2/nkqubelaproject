@@ -6,10 +6,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <body>
 <div id="content">
-    <h1>View All Patients</h1><br>
+    <h1>VIEW ALL PATIENTS</h1><br>
     
     <c:choose>
         <c:when test="${fn:length(patients) > 0}">
@@ -37,7 +38,7 @@
                             ${patient.contact.contactNumber}
                         </td>
                         <td align="center">
-                            ${patient.demographic.dateOfBirth}
+                            <b><fmt:formatDate value="${patient.demographic.dateOfBirth}" pattern="EEEE dd/MM/yyyy" /></b>
                         </td>
                         <td align="center">
                             ${patient.ward.name}

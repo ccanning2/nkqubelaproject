@@ -23,13 +23,13 @@ import org.testng.annotations.Test;
  * @author Hospital Management
  */
 
-public class PatientTest {
+public class StaffMemberTest {
     
     private static PatientCrudService patientCrudService;
     private static long id;    
     private static ApplicationContext ctx;
     
-    public PatientTest(){
+    public StaffMemberTest(){
     }
     
     @Test(priority = 1)

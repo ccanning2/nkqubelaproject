@@ -61,7 +61,7 @@ public class PatientController {
     {
         PatientModel patientModel = new PatientModel();
         model.addAttribute("patientModel", patientModel);
-        //model.addAttribute("wardList", data.getWardCrudService().findAll());
+        model.addAttribute("wardList", data.getWardCrudService().findAll());
         
         return "hospital/addPatient";
     }
@@ -114,16 +114,33 @@ public class PatientController {
 
         patientModel.setFirstName(patient.getName().getFirstName());
         patientModel.setLastName(patient.getName().getLastName());
+        patientModel.setMiddleName(patient.getName().getMiddleName());
+        patientModel.setNickName(patient.getName().getNickName());
+        patientModel.setEmailAddress(patient.getContact().getEmailAddress());
+        patientModel.setContactNumber(patient.getContact().getContactNumber());
+        patientModel.setIdentityNumber(patient.getIdentityNumber());
+        patientModel.setBedNumber(patient.getBedNumber());
+        patientModel.setCurrentCondition(patient.getCurrentCondition());
+        patientModel.setDateOfBirth(patient.getDemographic().getDateOfBirth());
         patientModel.setDateOfArrival(patient.getDateOfArrival());
         patientModel.setPatientNumber(patient.getPatientNumber());
         patientModel.setReasonForStay(patient.getReasonForStay());
+        patientModel.setGender(patient.getDemographic().getGender());
+        patientModel.setRace(patient.getDemographic().getRace());
+        patientModel.setTitle(patient.getDemographic().getTitle());
+        patientModel.setPatientNumber(patient.getPatientNumber());
+        patientModel.setMedicalAidName(patient.getMedicalAid().getMedicalAidName());
+        patientModel.setMedicalAidNumber(patient.getMedicalAid().getMedicalAidNumber());
+        patientModel.setMedicalAidScheme(patient.getMedicalAid().getMedicalAidScheme());
+        patientModel.setHasMedicalAid(patient.getMedicalAid().getMedicalAidNumber() != null ? true : false);
         model.addAttribute("patientModel", patientModel);
+        model.addAttribute("wardList", data.getWardCrudService().findAll());
         
         return "hospital/editPatient";
     }
     
     @RequestMapping(value = "/mergePatient.php", method = RequestMethod.POST)
-    public String merge(PatientModel patientModel, BindingResult result, HttpServletRequest req) 
+    public String merge(PatientModel patientModel, BindingResult result, HttpServletRequest req) throws ParseException 
     {
         if (result.hasErrors()) 
         {
@@ -131,15 +148,26 @@ public class PatientController {
         }
         
         Patient  patient = data.getPatientCrudService().findById(id);
-        Contact contact = new Contact();
 
-        patient.getName().setFirstName(patient.getName().getFirstName());
-        patient.getName().setLastName(patient.getName().getLastName());
-        patient.setDateOfArrival(patient.getDateOfArrival());       
-        patient.setPatientNumber(patient.getPatientNumber());
-        patient.setCurrentCondition(patient.getCurrentCondition());
-        patient.setReasonForStay(patient.getReasonForStay());       
-        patient.setContact(contact);
+        patient.getName().setFirstName(patientModel.getFirstName());
+        patient.getName().setLastName(patientModel.getLastName());
+        patient.getName().setMiddleName(patientModel.getMiddleName());
+        patient.getName().setNickName(patientModel.getNickName());
+        patient.getContact().setEmailAddress(patientModel.getEmailAddress());
+        patient.getContact().setContactNumber(patientModel.getContactNumber());
+        patient.setIdentityNumber(patientModel.getIdentityNumber());
+        patient.setBedNumber(patientModel.getBedNumber());
+        patient.setCurrentCondition(patientModel.getCurrentCondition());
+        patient.getDemographic().setDateOfBirth(patientModel.getDateOfBirth());
+        patient.setDateOfArrival(patientModel.getDateOfArrival());
+        patient.setPatientNumber(patientModel.getPatientNumber());
+        patient.setReasonForStay(patientModel.getReasonForStay());
+        patient.getDemographic().setGender(patientModel.getGender());
+        patient.getDemographic().setRace(patientModel.getRace());
+        patient.getDemographic().setTitle(patientModel.getTitle());
+        patient.getMedicalAid().setMedicalAidName(patientModel.getMedicalAidName());
+        patient.getMedicalAid().setMedicalAidNumber(patientModel.getMedicalAidNumber());
+        patient.getMedicalAid().setMedicalAidScheme(patientModel.getMedicalAidScheme());
 
         data.getPatientCrudService().merge(patient);
 
@@ -170,6 +198,8 @@ public class PatientController {
         }
         
         Map<String, String> stringValues = new HashMap<String, String>();
+        Map<String, Long> longValues = new HashMap<String, Long>();
+        Map<String, Date> dateValues = new HashMap<String, Date>();
         
         stringValues.put("firstName", patientModel.getFirstName());
         stringValues.put("lastName", patientModel.getLastName());
@@ -185,9 +215,17 @@ public class PatientController {
 
         stringValues.put("medicalAidName", patientModel.getMedicalAidName());
         stringValues.put("medicalAidScheme", patientModel.getMedicalAidScheme());
-        stringValues.put("reasonForStay",patientModel.getReasonForStay());        
+        stringValues.put("reasonForStay",patientModel.getReasonForStay());  
         
-        Patient patient = AppFactory.getPatient(stringValues,  patientModel.getBedNumber(), patientModel.getPatientNumber(), patientModel.getDateOfArrival(), patientModel.getDateOfBirth(), patientModel.getHasMedicalAid());
+        longValues.put("medicalAidNumber", patientModel.getMedicalAidNumber());
+        longValues.put("bedNumber", patientModel.getBedNumber());
+        longValues.put("patientNumber", patientModel.getPatientNumber());
+        
+        dateValues.put("dateOfArrival", patientModel.getDateOfArrival());
+        dateValues.put("dateOfBirth", patientModel.getDateOfBirth());
+        dateValues.put("estimatedDateofDischarge", patientModel.getEstimatedDateOfDeparture());
+        
+        Patient patient = AppFactory.getPatient(stringValues,  longValues, dateValues, patientModel.getHasMedicalAid());
 
         data.getPatientCrudService().persist(patient);
 

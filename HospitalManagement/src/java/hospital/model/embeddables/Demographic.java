@@ -7,6 +7,7 @@ package hospital.model.embeddables;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Embeddable;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -17,7 +18,10 @@ import javax.persistence.Embeddable;
 public class Demographic implements Serializable{
     private String gender;
     private String race;
+    
+    @DateTimeFormat(pattern="yyyy-mm-dd")
     private Date dateOfBirth;
+
     private String title;
 
     public String getTitle() {
