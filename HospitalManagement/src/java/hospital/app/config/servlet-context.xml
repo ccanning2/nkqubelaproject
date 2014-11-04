@@ -15,17 +15,18 @@
     <!-- @Controller, @Service, @Configuration, etc. -->
     <context:component-scan base-package="hospital" />
     
-    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
     
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
-    
-   
-
 
     <!-- Enables the Spring MVC @Controller programming model -->
     <mvc:annotation-driven>
       
     </mvc:annotation-driven>
+    
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+        <!-- <property name="maxUploadSize" value="500000" /> -->
+    </bean>
 
      
     <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources/ directory -->
@@ -38,5 +39,7 @@
         <property name="prefix" value="/WEB-INF/public/" />
         <property name="suffix" value=".jsp" />
     </bean>
+    
+    
 
 </beans>

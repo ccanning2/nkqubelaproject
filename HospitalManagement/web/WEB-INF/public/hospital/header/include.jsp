@@ -6,7 +6,7 @@
 
 <html>
 <head>
-    <title>Hospital Management</title>
+    <title>Nkqubela Project Management Software</title>
     <meta charset="utf-8">
     <meta http-equiv="Cache-Control" content="no-cache"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -15,5 +15,5 @@
 </head>
 
 <div id="header">
-     <br><a href=""><img src="resources/images/hospital_logo.png" style="height: 175px; width: 400px;"/></a>
+     <br><a href=""><img src="resources/images/nkqubela-logo.jpg" style="height: 175px; width: 400px;"/></a>
 </div><br>

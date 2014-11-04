@@ -8,7 +8,7 @@
 
 <body>
     <div id="content">
-        <img src="resources/images/hospital.jpg" style="border: 3px solid #1f2024;" width="750px;" height="400px;"/>
+        <img src="resources/images/cover_photo.jpg" style="border: 3px solid #1f2024;" width="750px;" height="400px;"/>
     </div>
 
 <jsp:include page="hospital/footer/include.jsp" />

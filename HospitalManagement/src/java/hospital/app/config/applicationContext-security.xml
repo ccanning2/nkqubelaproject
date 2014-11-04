@@ -7,16 +7,11 @@
                     http://www.springframework.org/schema/security/spring-security-3.1.xsd">
     
     <http use-expressions="true">
-        <intercept-url pattern="/" access="hasAnyRole('General', 'Supervisor', 'User', 'Manager')"/>
-        <intercept-url pattern="/addDepartment.html" access="hasAnyRole('Supervisor', 'Manager')"/>
-        <intercept-url pattern="/addWard.html" access="hasAnyRole('Supervisor', 'Manager')"/>
-        <intercept-url pattern="/addStaffMember.html" access="hasAnyRole('Supervisor', 'Manager')"/>      
-        <intercept-url pattern="/deleteDepartment.html" access="hasAnyRole('Supervisor', 'Manager')"/>
-        <intercept-url pattern="/deleteWard.html" access="hasAnyRole('Supervisor', 'Manager')"/>
-        <intercept-url pattern="/deleteStaffMember.html" access="hasAnyRole('Supervisor', 'Manager')"/>
-        <intercept-url pattern="/deleteFromTableDepartment.html" access="hasAnyRole('Supervisor', 'Manager')"/>
-        <intercept-url pattern="/deleteFromTableWard.html" access="hasAnyRole('Supervisor', 'Manager')"/>
-        <intercept-url pattern="/deleteFromTableStaffMember.html" access="hasAnyRole('Supervisor', 'Manager')"/>
+        <!-- <intercept-url pattern="/" access="hasAnyRole('General', 'Administrator', 'User', 'Manager')"/> -->
+        <intercept-url pattern="/addShoeboxItem.html" access="hasRole('Administrator')"/>  
+        <intercept-url pattern="/deleteShoeboxItem.html" access="hasRole('Administrator')"/>
+        <intercept-url pattern="/viewShoeboxItems.html" access="hasRole('Administrator')"/>
+        <intercept-url pattern="/viewShoeboxItem.html" access="hasRole('Administrator')"/>
        <form-login login-page="/login" default-target-url="/" authentication-failure-url="/loginfailed" />
        <logout logout-success-url="/"/>
        <access-denied-handler error-page="/accessDenied.html"/>

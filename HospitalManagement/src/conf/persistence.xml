@@ -2,7 +2,7 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="HospitalManagementPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <non-jta-data-source>hospitaldata</non-jta-data-source>
+    <non-jta-data-source>testdb</non-jta-data-source>
     <class>hospital.model.entities.MedicalAid</class>
     <class>hospital.model.entities.Ward</class>
     <class>hospital.model.entities.Department</class>
@@ -11,6 +11,7 @@
     <class>hospital.model.entities.Person</class>
     <class>hospital.model.entities.Roles</class>
     <class>hospital.model.entities.Users</class>
+    <class>hospital.model.entities.ShoeboxItem</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.connection.username" value="username"/>

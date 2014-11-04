@@ -5,7 +5,7 @@
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
-<title>Hospital Management Software - Login Page</title>
+<title>Nkqubela Project Management System - Login Page</title>
 <meta charset="utf-8">
 <meta http-equiv="Cache-Control" content="no-cache"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -14,16 +14,16 @@
 </head>
 
 <body onload='document.f.j_username.focus();'>
- <div id="header">
-     <br><a href=""><img src="resources/images/hospital_logo.png" style="height: 175px; width: 400px;"/></a>
+<div id="header">
+     <br><a href=""><img src="resources/images/nkqubela-logo.jpg" style="height: 175px; width: 400px;"/></a>
 </div><br>
-<h2 style="text-align: center;">Please login into Hospital Management Software to continue.</h2>
+<h2 style="text-align: center;">Please login into Nkqubela Project Management System:</h2>
 
-<c:if test="${not empty error}">
-        <div class="errorblock">
-                Your login attempt was not successful, please try again.<br /> This was caused by:
-                ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
-        </div>
+<c:if test="${!empty error}">
+    <div class="errorblock">
+        Your login attempt was not successful, please try again.<br /> 
+        This was caused by: ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+    </div>
 </c:if>
 
 <div style="margin-left: 42.5%; padding-top: 20px;">

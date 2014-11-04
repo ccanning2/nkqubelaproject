@@ -9,10 +9,9 @@ import java.io.Serializable;
 /**
  *
  * @author Hospital Management
+ * @param <T>
  */
 
-public interface GenericDAO <T extends Serializable> extends DAO<T, Long>
-{
-	void setClass(final Class<T> classToSet);
+public interface GenericDAO <T extends Serializable> extends DAO<T, Long>{
+    void setClass(final Class<T> classToSet);
 }
-

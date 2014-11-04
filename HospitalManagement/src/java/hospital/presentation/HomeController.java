@@ -32,18 +32,18 @@ public class HomeController {
     
     @RequestMapping(value="/loginfailed", method = RequestMethod.GET)
     public String loginerror(Model model) {
-            model.addAttribute("error", "true");
-            return "login";
+        model.addAttribute("error", "true");
+        return "login";
     }
     
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logout(Model model){
-            return "login";
+        return "login";
     }
 
-    @RequestMapping(value = "/about.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/aboutNkqubelaProject.html", method = RequestMethod.GET)
     public String getAbout(Model model){
-        return "about/about";
+        return "about/aboutNkqubelaProject";
     }
     
     @RequestMapping(value = "/accessDenied.html", method = RequestMethod.GET)

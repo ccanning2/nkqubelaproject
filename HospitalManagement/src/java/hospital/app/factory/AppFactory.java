@@ -12,23 +12,34 @@ import hospital.model.entities.MedicalAid;
 import hospital.model.entities.Patient;
 import hospital.model.entities.Person;
 import hospital.model.entities.Roles;
+import hospital.model.entities.ShoeboxItem;
 import hospital.model.entities.StaffMember;
 import hospital.model.entities.Users;
 import hospital.model.entities.Ward;
 import hospital.model.md5.PasswordEncrypt;
+import java.math.BigDecimal;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Hospital Management
  */
 
-public class AppFactory 
-{
+public class AppFactory {
+    
+    public static ShoeboxItem getShoeboxItem(Map<String, String> stringValues, final BigDecimal estimatedPrice){
+        ShoeboxItem shoeboxItem = new ShoeboxItem();
+        
+        shoeboxItem.setEstimatedPrice(estimatedPrice);
+        shoeboxItem.setItemName(stringValues.get("itemName"));
+        shoeboxItem.setItemDescription(stringValues.get("itemDescription"));
+        shoeboxItem.setImageUrl(stringValues.get("imageUrl"));
+        
+        return shoeboxItem;
+    }
+    
     public static Department getDepartment(Map<String, String> stringValues, Integer floorNumber, Integer size, StaffMember personInCharge) 
     {
         Department department = new Department();

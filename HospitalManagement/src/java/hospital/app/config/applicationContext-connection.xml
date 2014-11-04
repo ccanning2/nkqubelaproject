@@ -18,7 +18,7 @@
 <!-- Scans within the base package of the application for @Components to configure as beans -->
  
     <bean id="contextApplicationContextProvider" class="hospital.app.config.ApplicationContextProvider"></bean>
-    
+    <bean id="shoeboxItemValidator" class="hospital.presentation.controllers.validators.ShoeboxItemValidator"/>
    
     <tx:annotation-driven />
  
